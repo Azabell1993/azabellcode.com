@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BoardDto {
+public class Board {
     private Long            idx;
     private String          title;
     private String          content;

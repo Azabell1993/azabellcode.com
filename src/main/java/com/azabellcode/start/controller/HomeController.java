@@ -86,15 +86,6 @@ public class HomeController {
 		return "main/elements";
 	}
 
-	@RequestMapping(value="/board", method=RequestMethod.GET)
-	public String board(Model model) {
-		System.out.println("came");
-        System.out.println(mapMapper.boardSQLMAP());
-		model.addAttribute("site_title", projectName);
-		model.addAttribute("boardlist", mapMapper.boardSQLMAP());
-		return "board/board";
-	}
-
 	@RequestMapping(value="/sqltest", method=RequestMethod.GET)
 	public String sqltest(Model model) {
         System.out.println("came");

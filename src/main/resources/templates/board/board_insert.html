@@ -1,0 +1,69 @@
+<!--footerFragment 선언-->
+<div th:fragment="indexFragment">
+<section id="banner">
+    <div class="content">
+        <header>
+            <h1>게시판<h1><br />
+        </header>
+    </div>
+	<style>
+				.number {
+			margin: 10px;
+			padding-top : 20px;
+			text-align : center;
+		}
+
+		.number li {
+			display : inline-block;
+		}
+
+		.number li a {
+			padding: 5px 10px 5px 10px;
+			border : 1px solid #999;
+		}
+
+		.number li a.active {
+			background-color : #e6e6e6;
+		}
+
+	</style>
+</section>
+		<!-- Content -->
+		<div class="table-wrapper">
+			<table class="alt">
+				  <tbody>
+					<tr>
+						<td>idx</td>
+						<td>title</td>
+						<td>content</td>
+						<td>createdDate</td>
+					</tr>
+				  </tbody>
+				<tbody>
+					<tr th:each="boardValue : ${boardlist}">
+						<td th:text="${boardValue.idx}"></td>
+						<td th:text="${boardValue.title}"></td>
+						<td th:text="${boardValue.content}"></td>
+						<td th:text="${boardValue.createdDate}"></td>
+				  </tr>
+			  </tbody>
+			</table>
+		</div>
+			<ul class="number">
+				<li><a href="#">&lt;</a></li>
+				<li><a href="#" class="active">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">&gt;</a></li>
+			</ul>
+
+			<button class="mybutton">글쓰기</button>
+		<hr class="major" />
+</div>
+
+
+
+
+
+

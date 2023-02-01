@@ -1,0 +1,41 @@
+<!-- Preformatted Code -->
+<p>기본 원형 두번째 예제(STL 라이브러리 기본 문법 코어설계)</p>
+<pre><code>
+    //16진수로 변환.
+    void    az_puthex(unsigned int n)
+    {
+        char    ch;
+        char    *str;
+    
+        str = "0123456789abcdef";
+        if(n)
+        {
+            /*
+            10진수	16진수	2진수
+            0		0x0		0000
+            1		0x1		0001
+            2		0x2		0010
+            3		0x3		0011
+            4		0x4		0100
+            5		0x5		0101
+            6		0x6		0110
+            7		0x7		0111
+            8		0x8		1000
+            9		0x9		1001
+            10		0xA		1010
+            11		0xB		1011
+            12		0xC		1100
+            13		0xD		1101
+            14		0xE		1110
+            15		0xF		1111
+            */
+    
+            //0xF : 15(1111)임 
+            ch = (char)(n & 0xF);
+            n = (n >> 4);
+            az_puthex(n);
+            az_putchar(str[(int)ch]);
+        }
+    }
+</code></pre>
+<!-- Preformatted Code -->

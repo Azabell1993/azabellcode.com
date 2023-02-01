@@ -1,0 +1,693 @@
+<!--footerFragment 선언-->
+<div th:fragment="indexFragment">
+<section id="banner">
+    <div class="content">
+        <header>
+            <h1>블로그 주인장 소개<h1><br />
+        </header>
+    </div>
+	<style>
+		.wrapper {
+			margin: 10px;
+			height: calc*(100% - 100px);
+			width: 100%;
+			position: center;
+			box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+			background: transparent;
+			border-radius: 10px;
+		}
+		.title {
+			font-size: 1.3em;
+			font-weight: 500;
+			position: relative;
+			padding-left: 20px;
+		}
+		.description {
+			margin-top: 20px;
+			font-size: 0.95em;
+			color: rgb(104, 104, 104);
+		}
+		img {
+			vertical-align: middle;
+			border-style: none;
+		}
+		.date {
+			text-align: right;
+			font-size: 0.8em;
+		}
+	</style>
+</section>
+		<!-- Content -->
+			<h2 id="content">개발자라는 직업을 선택하면서</h2>
+			<p>과거에 꽤 오랫동안 그림을 그렸었지만 그림을 하루 종일 그리면서 직업으로 삼기에는 은연 중 두렵고 싫었던 것 같습니다.  <strong>취미랑 직업은 분명히 다르다고 생각합니다.</strong><br>
+			<p>그래서 도망치고 캐드를 하였으나 우연한 계기로 개발자라는 직업으로 전직하였습니다.</p>
+			<div class="row">
+				<div class="col-6 col-12-small">
+					<h2 id="content">비전공자로써 공부를 한 경로</h2>
+					<p>C언어를 처음에 접하자마자 바로 매료되었습니다. <br>
+					<p>기초 책 한 권을 사서 하루에 한 번씩 이해가 되는 곳까지 매일 정독을 하면서 손 코딩을 하였으며, 완독을 완료한 시점에서는 빠르게 문제해결 능력을 키우기 위하여 윈도우를 밀고 '아치 리눅스'를 설치하였습니다.<br>
+					<p>고작 몇개월을 하고 처음에 아무것도 없는 상태에서 아치리눅스라는 OS를 설치 하였을 때에는 컴퓨터 지식이 전무하였기 때문에 거의 20시간이 걸렸습니다. 그렇게 계속 포맷을 하면서 시간을 줄여나가니 1시간으로 단축시킨 추억과 경험이 있습니다.</p>
+					<p>모든 과정을 직접 삽질하면서 하나씩 하나씩 건설해나가는 재미를 느끼면서 평생동안 공부를 해야한다는 생각을 하니 이 직업을 선택하면 끊임없이 계속 퍼즐을 맞추는 여정을 가질 수 있을 것이라고 생각하고 전직하였습니다.<br>
+					</p>
+				</div>
+				<div class="col-6 col-12-small">
+					<h2 id="content">여러 분야의 학원</h2>
+					<p>취직을 하기 전에는 임베디드와 보안분야, 그리고 앱 분야와 웹 분야를 하나씩 두루 찍먹하면서 컴퓨터라는 세계를 탐구해나갔습니다. 높은 기술로 배워나간 것은 아니었지만 하나씩 찍먹을 함으로써 4년제 공학과를 나온 전공자들처럼 직업으로 삼기전에 유사 경험(?)을 하였다고 생각하고 있습니다.<br>
+				</div>
+				
+				<!-- Break -->
+				<div class="col-4 col-12-medium">
+					<h3 id="content">작은 개발 포트폴리오</h3>
+					<p>WASM(와즘) 기술을 알기 전에 제작한 취직 포트폴리오입니다.</p>
+				</div>
+				<div class="col-4 col-12-medium">
+					<h3 id="content">캐드</h3>
+					<p>2013년부터 2020년까지 캐드로 밥벌이를 하였으니 몇 장을 수록하였습니다.</p>
+				</div>
+				<div class="col-4 col-12-medium">
+					<h3 id="content">그림</h3>
+					<p>저는 적록색약입니다. 그래서 5살때부터 펜을 놓기 전까지 한 평생을 흑백으로 스케치만 하였습니다. 몇 점을 수록하였습니다.</p>
+				</div>
+			</div>
+
+		<hr class="major" />
+				<!-- Content -->
+				<div class="row">
+					<p>반갑습니다.<br>
+					<p>포트폴리오에서는 이미지를 클릭하면 링크로 이동이 되며, 그 아래 이미지들은 클릭시 확대됩니다.</p>
+				</div>
+		<hr class="major"/>
+
+		<h2 id="elements">개발자로 전직하기 전에 포트폴리오로 올린 것</h2>
+		<h3 id="elements">C언어, Web, 보안 등</h3>
+		<p>IT개발자로 전직을 하면서 포트폴리오에 수록한 아주 작은 프로젝트들입니다.</p>
+		<div class="wrapper">
+			<div class="row gtr-200">
+					<!-- 1번째 포트폴리오 -->
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">C언어 Printf 내장함수 만들기</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<img src="images/introduce/printf.png" onclick="window.open('https://github.com/Azabell1993/Linux/tree/main/Printf_built_in_function/printf.c')" alt="C언어" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2021</div>
+						<div class="description">
+							<blockquote>
+								<p>C언어 입문자 초보때 한 프로젝트입니다. 그렇기 때문에 부족한 점이 매우 많습니다.</p>
+									<ul>										
+										<li>Copy_built_in_function</li>
+										<li>Printf_built_in_function</li>
+										<li>UbuntuOsUpdate</li>
+										<li>asm</li>
+										<li>az_putchar</li>
+										<li>shell_script</li>
+									</ul>
+									<details>
+										<summary>코드 예제</summary>
+										<div class="row">
+											<section include-html="/introduce_code/intro_code_3.html"></section>
+										</div>
+									</details>
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<!-- 2번째 포트폴리오 -->
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">C언어로 객체지향 이해하기</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<img src="images/introduce/C언어.png" onclick="window.open('https://github.com/Azabell1993/ClangStructPointerExample')" alt="C언어" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2021</div>
+						<div class="description">
+							<blockquote>
+								<p>C언어를 절차지향 사고에서 벗어나 객체지향 사고형으로 단련시켜주는 기본 소스코드 예제입니다.<br>
+									모든 예제 소스들은 Azabell1993이 직접 만들었습니다.<br>
+									특히, example11에서는 리눅스의 창시자이자 최대 기여자인 리누즈 토발즈가 1991년에 쓰던 문법과 유사한 C언어의 객체지향을 맛보실 수 있습니다.<br>
+									필자 역시 C에서는 캡슐화와 인터페이스, 상속 이런 C보다 고급 언어에 있는 프로그래밍 키워드 및 용어 개념이 존재하지않기 때문에 직접 비슷한 기능들을 구사해보면서 하드웨어에 가까운 구조로 C++ 및 JAVA의 코드가 아닌 C언어로 컴퓨터에 대해서 좀 더 깊게 이해할 수 있었습니다.<br>
+									이 저장소는 단순한 기본 예제들의 모읍입니다.<br>
+									단순한 기본 예제이지만 잘 이해하면서 따라할 수 있다면 C언어 기반으로 객체지향의 패러다임을 온전히 이해하실 수 있을 것 입니다. 이 코드들은 구조체 포인터를 남용(?)하면서 여러 기법을 연구한 것을 구경하실 수 있는 저장소입니다.</p>
+
+								<details>
+									<summary>구조체 예제 A</summary>
+									<ul class="icons">
+										소스코드 바로가기 <li><a onclick="window.open('https://github.com/Azabell1993/ClangStructPointerExample/blob/6890848d7faefc3ab5c72a7caf20c7da0c2ed701/example04_Inher/inher_class_B.c#L265-L317e')" class="icon brands fa-github"></a></li>
+									</ul>
+									<div class="center gtr-100">
+										<section include-html="/introduce_code/intro_code_1.html"></section>
+									</div>
+								</details>
+								<details>
+									<summary>구조체 예제 B</summary>
+									<ul class="icons">
+										소스코드 바로가기 <li><a onclick="window.open('https://github.com/Azabell1993/ClangStructPointerExample/blob/573afecf26941d50644a4b7863f9ef41d28fea05/example05_basic_stl/include/program.h#L1-L71')" class="icon brands fa-github"></a></li>
+									</ul>
+									<div class="center gtr-100">
+										<section include-html="/introduce_code/intro_code_2.html"></section>
+										<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;glib.h&gt;
+#include "include/program.h"
+
+say_hello(hellofunc, int)
+ArrayList()
+int main(int argc, char* argv[])
+{
+	hellofunc hello = new_hellofunc();
+	hello.sethello(&hello, 30);
+	hello.gethello(&hello);
+
+	GString *my_string = g_string_new("This Hello world is %d chars long\n");
+	g_print(my_string->str, my_string->len);
+	g_string_free(my_string, TRUE);
+}
+										</code>
+										</pre>
+									</div>
+								</details>
+								<details>
+									<summary>구조체 예제 C</summary>
+									<ul class="icons">
+										소스코드 바로가기 <li><a onclick="window.open('https://github.com/Azabell1993/ClangStructPointerExample/blob/573afecf26941d50644a4b7863f9ef41d28fea05/exampleHelloworld/0/program.h#L1-L72')" class="icon brands fa-github"></a></li>
+									</ul>
+									<div class="center gtr-100">
+										<section include-html="/introduce_code/intro_code_4.html"></section>
+									</div>
+								</details>
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<!-- 3번째 포트폴리오 -->
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">추천 알고리즘 웹 쇼핑몰</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<img src="images/introduce/web쇼핑몰.jpg" onclick="window.open('https://github.com/Azabell1993/SIAT_FinalProject.git')" alt="씨앗 프로젝트" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2021</div>
+						<div class="description">
+							<blockquote>
+								<p>씨앗에서의 웹 프로그램을 듣고 난 뒤에 팀원들과 같이 만든 프로젝트입니다. 이때 비동기 방식과 js를 처음 맞딱드려 초기에 난항을 겪었던 경험이 있습니다.</p>
+							</blockquote>
+						</div>
+						<br>
+					</div>
+			</div>
+		</div>
+		<hr class="major" />
+
+		<h1 id="elements">저는 과거에 . . . . . . </h1>
+		<h2 id="elements">엔지니어 시절</h2>
+		<h3 id="elements">AutoCAD, UG/NX</h3>
+		<p>금형 업에서 몸을 담갔을 때 하던 것 몇 장입니다.</p>
+		<div class="wrapper">
+			<div class="row gtr-200">
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">캐드1</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/캐드1.JPG')">
+								<img src="images/introduce/캐드1.JPG" alt="캐드1" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2015</div>
+						<div class="description">
+							<blockquote>
+								인턴 시절 하던 습작
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">금형1</div>
+						<a href="javascript:showPicture('images/introduce/캐드2.jpg')">
+							<img src="images/introduce/캐드2.jpg" alt="금형 모델링" style="width: 100%; height:auto;">
+						</a><br>
+						<div class="date">2011</div>
+						<div class="description">
+							<blockquote>
+								금형 모델링 1
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">금형1</div>
+						<a href="javascript:showPicture('images/introduce/캐드3.jpg')">
+							<img src="images/introduce/캐드3.jpg" alt="금형 모델링" style="width: 100%; height:auto;">
+						</a><br>
+						<div class="date">2011</div>
+						<div class="description">
+							<blockquote>
+								금형 모델링 2
+							</blockquote>
+						</div>
+						<br>
+						
+						<!-- Blockquote -->
+						<div class="title">제품 습작</div>
+							<a href="javascript:showPicture('images/introduce/제품1.JPG')">
+								<img src="images/introduce/제품1.JPG" alt="제품1" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2013</div>
+						<div class="description">
+							<blockquote>
+								제품 모델링
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">제품 습작</div>
+							<a href="javascript:showPicture('images/introduce/제품2.JPG')">
+								<img src="images/introduce/제품2.JPG" alt="제품1" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2013</div>
+						<div class="description">
+							<blockquote>
+								제품 모델링
+							</blockquote>
+						</div>
+						<br>
+					</div>
+			</div>
+		</div>
+		<hr class="major" />
+
+		<h2 id="elements">청소년기 덕질</h2>
+		<h3 id="elements">미술 해부학</h3>
+		<p>의학의 목적이 아닌 그림 그리기 용입니다.
+			의학은 어디까지나 수축/이완이 비례로 어떻게 형성되는지 알기 위한 용도로만 했습니다.</p>
+		<div class="wrapper">
+			<div class="row gtr-200">
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">다리 해부도</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/다리해부도.png')">
+								<img src="images/introduce/다리해부도.png" alt="다리 해부도" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								다리 해부학을 공부하고 정립한 해부도
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">다리 해부도</div>
+						<a href="javascript:showPicture('images/introduce/다리1.png')">
+							<img src="images/introduce/다리1.png" alt="다리 해부도" style="width: 100%; height:auto;">
+						</a><br>
+						<div class="date">2011</div>
+						<div class="description">
+							<blockquote>
+								다리 해부학에 대한 부분을 공부한 흔적
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">상체 해부도</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/상체해부도.png')">
+								<img src="images/introduce/상체해부도.png" alt="상체 해부도" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								상체 해부학을 공부하고 정립한 해부도
+							</blockquote>
+						</div>
+						<br>
+						
+						<!-- Blockquote -->
+						<div class="title">상체 해부도</div>
+							<a href="javascript:showPicture('images/introduce/상체1.png')">
+								<img src="images/introduce/상체1.png" alt="다리 해부도" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2011</div>
+						<div class="description">
+							<blockquote>
+								상체 해부학에 대한 부분을 공부한 흔적
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">팔 해부도</div>
+						<a href="javascript:showPicture('images/introduce/팔해부도.png')">
+							<img src="images/introduce/팔해부도.png" alt="다리 해부도" style="width: 100%; height:auto;">
+						</a><br>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								팔 해부학을 공부하고 정립한 해부도
+							</blockquote>
+						</div>
+						<br>
+						
+						<!-- Blockquote -->
+						<div class="title">상체 해부도</div>
+							<a href="javascript:showPicture('images/introduce/상체2.png')">
+								<img src="images/introduce/상체2.png" alt="다리 해부도" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2011</div>
+						<div class="description">
+							<blockquote>
+								상체 해부학에 대한 부분을 공부한 흔적
+							</blockquote>
+						</div>
+						<br>
+					</div>
+			</div>
+		</div>
+		<hr class="major" />
+
+		<h2 id="elements">심비오트 컬렉션</h2>
+		<h3 id="elements">마블코믹스 인기 캐릭터 Venom</h3>
+		<p>장기간의 시간동안 베놈과 카니지라는 캐릭터를 좋아했습니다.</p>
+		<p>그림은 해부학 공부 이외에 취미 정도로 간간히 그렸기 때문에 완성작이 없습니다.</p>
+		<p>현재는 그림을 그리고 있지 않지만 가지고 있던 것 몇 장을 업로드합니다.</p>
+		<p>근육 그림들은 너무 오래된 그림들이기 때문에 년도는 미상이며, 편의상 2016년으로 통일하였습니다.</p>
+		<div class="wrapper">
+			<div class="row gtr-200">
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">베놈1</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/베놈1.jpg')">
+								<img src="images/introduce/베놈1.jpg" alt="베놈1" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베놈 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">베놈2</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/베놈2.jpg')">
+								<img src="images/introduce/베놈2.jpg" alt="베놈2" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베놈 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">베놈3</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/베놈3.jpg')">
+								<img src="images/introduce/베놈3.jpg" alt="베놈3" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베놈 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">베놈4</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/베놈4.jpg')">
+								<img src="images/introduce/베놈4.jpg" alt="베놈4" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베놈 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+						
+						<!-- Blockquote -->
+						<div class="title">베놈5</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/베놈5.jpg')">
+								<img src="images/introduce/베놈5.jpg" alt="베놈5" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베놈 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">베놈6</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/베놈6.jpg')">
+								<img src="images/introduce/베놈6.jpg" alt="베놈6" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베놈 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">베놈7</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/베놈7.jpg')">
+								<img src="images/introduce/베놈7.jpg" alt="베놈7" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베놈 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">기타</div>
+							<a href="javascript:showPicture('images/introduce/인체.jpg')">
+								<img src="images/introduce/인체.jpg" alt="인체" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								습작
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">베인</div>
+						<a href="javascript:showPicture('images/introduce/베인.png')">
+								<img src="images/introduce/베인.png" alt="인체" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베인 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">베트맨</div>
+						<a href="javascript:showPicture('images/introduce/베트맨.jpg')">
+								<img src="images/introduce/베트맨.jpg" alt="인체" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								베트맨 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+					</div>
+			</div>
+		</div>
+		<hr class="major" />
+
+		<h2 id="elements">기타 그림</h2>
+		<div class="wrapper">
+			<div class="row gtr-200">
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">유튜버 주깡깡</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/주깡깡.jpg')">
+								<img src="images/introduce/주깡깡.jpg" alt="주깡깡" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2020</div>
+						<div class="description">
+							<blockquote>
+								주깡깡님 인물화 그림
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">인물화</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/인물화.jpg')">
+								<img src="images/introduce/인물화.jpg" alt="인물화" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2020</div>
+						<div class="description">
+							<blockquote>
+								인물화
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">밖을 보고 있는 여성</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/인물화2.jpg')">
+								<img src="images/introduce/인물화2.jpg" alt="인물화2" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2020</div>
+						<div class="description">
+							<blockquote>
+								밖을 보고 있는 여성
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">인물화</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/인물화3.jpg')">
+								<img src="images/introduce/인물화3.jpg" alt="인물화3" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2021</div>
+						<div class="description">
+							<blockquote>
+								인물화
+							</blockquote>
+						</div>
+						<br>
+						
+						<!-- Blockquote -->
+						<div class="title">캐릭터 그림</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/인물화4.jpg')">
+								<img src="images/introduce/인물화4.jpg" alt="인물화4" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2021</div>
+						<div class="description">
+							<blockquote>
+								여성 캐릭터 그림
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">여성 캐릭터 얼굴</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/인물화5.jpg')">
+								<img src="images/introduce/인물화5.jpg" alt="인물화5" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2021</div>
+						<div class="description">
+							<blockquote>
+								여성 캐릭터 얼굴
+							</blockquote>
+						</div>
+						<br>
+					</div>
+
+					<div class="col-4 col-12-medium">
+						<!-- Blockquote -->
+						<div class="title">현타가 온 여자</div>
+						<a class="img" target="_blank" rel="noopener noreferrer">
+							<a href="javascript:showPicture('images/introduce/인물화6.jpg')">
+								<img src="images/introduce/인물화6.jpg" alt="인물화6" style="width: 100%; height:auto;">
+							</a><br>
+						</a>
+						<div class="date">2021</div>
+						<div class="description">
+							<blockquote>
+								현타가 온 여자
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">커플</div>
+							<a href="javascript:showPicture('images/introduce/인물화7.jpg')">
+								<img src="images/introduce/인물화7.jpg" alt="인물화7" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2021</div>
+						<div class="description">
+							<blockquote>
+								커플
+							</blockquote>
+						</div>
+						<br>
+
+						<!-- Blockquote -->
+						<div class="title">모작</div>
+						<a href="javascript:showPicture('images/introduce/모작.jpg')">
+								<img src="images/introduce/모작.jpg" alt="모작" style="width: 100%; height:auto;">
+							</a><br>
+						<div class="date">2016</div>
+						<div class="description">
+							<blockquote>
+								모작 그림
+							</blockquote>
+						</div>
+						<br>
+					</div>
+			</div>
+		</div>
+		<hr class="major" />
+
+	</div>
+</div>
+</div>
+

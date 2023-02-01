@@ -1,0 +1,1 @@
+gcc SqlConnect.c -o test -lmysqlclient

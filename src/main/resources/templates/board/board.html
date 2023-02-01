@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+<head>
+    <title th:text="${site_title}">Template Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/fold.css" />
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+                <div id="main">
+                    <div class="inner">
+                        <div>
+							<!-- Header -->
+								<header id="header">
+									<a th:href="@{/index}" class="logo"><strong>AZABELLCODE</strong> by Azabell1993</a>
+
+								</header>
+						
+							<!-- Banner -->
+								<section id="banner">
+									<div class="content">
+                                        
+									</div>
+								</section>
+							</div>
+						
+						<!-- insert main content -->
+                        <th:block th:replace="/board/board_insert.html :: indexFragment"></th:block>
+                        
+						<div>
+                        <section include-html="/main/foot.html"></section>
+                    </div>
+                    </div>
+                </div>
+
+                <div id="sidebar">
+                    <div class="inner">
+                        <th:block th:replace="/main/menu.html :: mennuFragment"></th:block>
+                    </div>
+                </div>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/innerHTML.js"></script>
+        <script src="assets/js/includeRouter.js"></script>
+        
+        
+</body>
+    <script>
+    includeHTML( function () {
+      includeRouter( function () {
+        // do something in the future
+      });
+    });
+    </script>
+
+    <script>
+        var imgCommonPreview = new Image();
+        function showPicture(imgSrc) {
+            imgCommonPreview.src = imgSrc;
+            setTimeout("createPreviewWin(imgCommonPreview)", 100);
+        }
+        function createPreviewWin(imgCommonPreview) {
+            if (! imgCommonPreview.complete) {
+                setTimeout("createPreviewWin(imgCommonPreview)", 100);
+                return;
+            }
+            var scrollsize = 17;
+            var swidth = screen.width - 10;
+            var sheight = screen.height - 90;
+            var wsize = imgCommonPreview.width
+            var hsize = imgCommonPreview.height;
+        
+            if(wsize < 50) wsize = 50;     // 가로 최소 크기
+            if(hsize < 50) hsize = 50;     // 세로 최소 크기
+            if(wsize > swidth) wsize = swidth;     // 가로 최대 크기
+            if(hsize > sheight) hsize = sheight;     // 세로 최대 크기
+            //세로가 최대크기를 초과한경우 세로스크롤바 자리 확보
+            if((wsize < swidth-scrollsize) && hsize >= sheight) wsize += scrollsize;
+            //가로가 최대크기를 초과한경우 가로스크롤바 자리 확보
+            if((hsize < sheight-scrollsize) && wsize >= swidth) hsize += scrollsize;
+            // IE 6,7 전용 : 가로세로 크기가 보통일때 세로 스크롤바 자리 확보
+            if((wsize < swidth-scrollsize) && hsize < sheight 
+                && (navigator.userAgent.indexOf("MSIE 6.0") > -1
+                || navigator.userAgent.indexOf("MSIE 7.0") > -1))wsize += scrollsize; 
+        
+            imageWin = window.open("", "winPreviewImg", "top=0,left=0,width=" + wsize
+                                + ",height=" + hsize +",scrollbars=yes,resizable=yes,status=no");
+            imageWin.document.write("<html><title>Preview</title><body style='margin:0;cursor:pointer;' title='Close' onclick='window.close()'>");
+            imageWin.document.write("<img src='" + imgCommonPreview.src + "'>");
+            imageWin.document.write("</body><html>");
+        } 
+    </script>
+</html>

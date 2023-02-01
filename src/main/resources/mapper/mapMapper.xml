@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.azabellcode.start.mapper.MapMapper" >
+   <select id="listMap" resultType="com.azabellcode.start.dto.MapDto">
+        SELECT * FROM TEST_MAP
+    </select>
+    <select id="testMapbSQLMAP" resultType="com.azabellcode.start.dto.testMapbSQLMAPDto">
+        SELECT * FROM TEST_MAPB
+    </select>
+
+    <select id="membertblSQLMAP" resultType="com.azabellcode.start.dto.MembertblDto">
+        SELECT 	MEMBER_ID
+        , MEMBER_NICKNAME
+        , MEMBER_BIRTH
+        , MEMBER_ADDR
+        , MEMBER_EMAIL
+        , CAST(date_format(MEMBER_JOINDATE,"%Y-%m-%d") AS CHAR)
+        , MEMBER_EVENTQTY
+        FROM 	MEMBERTBL
+    </select>
+
+    <select id="membertblSQLMAPCOUNT"  resultType="int">
+        SELECT COUNT(*) AS COUNT 
+        FROM 	MEMBERTBL B
+        WHERE 	B.MEMBER_ID LIKE '%';
+    </select>
+
+    <select id="boardSQLMAP" resultType="com.azabellcode.start.dto.BoardDto">
+        select idx ,title ,content ,createdDate from board;
+    </select>
+    
+    <select id="date" resultType="com.azabellcode.start.dto.DateDto">
+        SELECT now() from dual;
+    </select>
+</mapper>

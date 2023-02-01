@@ -1,0 +1,162 @@
+<!--footerFragment 선언-->
+<div th:fragment="indexFragment">
+<section id="banner">
+    <div class="content">
+        <header>
+            <h1>제 블로그에 오신 것을 환영합니다.<h1><br />
+            <h3>.wasm Binaray File 연동 TestSpace<h3>
+            <h3>C언어 Function Test</h3>
+        </header>
+        <ul class="actions">
+            <li>
+                <input type=number size=20 id="numA"> + <input type=number size=20 id="numB">
+                <button class="mybutton">ADD</button>
+                <p id="textcontent">먼저 'ADD'버튼을 눌러주세요. 이곳에 결과가 나타납니다.</p> 
+                
+            </li>
+        </ul>
+    </div>
+    <img src="images/mainPic.png"  style="width: 100%; height:auto;" alt="" />
+</section>
+	<header class="main">
+		<h1>사용된 코드</h1>
+	</header>
+
+	<!-- Content -->
+		<h2 id="content">살펴보기</h2>
+		<p>이 블로그에는 C/C++언어를 와즘과 연동하여 연습한 샘플 코드들이 있습니다.</p>
+		<div class="row">
+<div class="col-12 col-12-small">
+<h2 id="content">header code file</h2>
+<pre><code>
+	#pragma once
+	#ifndef PROGRAM_H
+	#define PROGRAM_H
+
+	#include &lt;stdio.h&gt;
+	#include &lt;stdbool.h&gt;
+	#include &lt;assert.h&gt;
+	#include &lt;memory.h&gt;
+														
+	#define class struct
+	#define public static __attribute__((visibility("default")))
+	#define private static __attribute__((visibility("hidden")))
+															
+	#ifdef __cheaderfile
+	extern "C" {
+	#endif
+	#ifndef BUILD_MY_DLL
+	#define SHARED_LIB __declspec(dllexport)
+	#else
+	#define SHARED_LIB __declspec(dllexport)
+	#endif
+	#ifdef _GNUC_
+	#define NORETERN _attribute_ ((_noreturn_))
+		/* 함수 전방 선언 */
+		extern public void addFunction##_set_Add(addFunction *, type, type);
+		extern public int addFunction##_get_Add(const addFunction *);
+															
+		/* 비멤버 생성자 전방 선언 */
+		addFunction new_##addFunction(void);
+	#endif
+														
+	#define say_add(addFunction, int)
+	
+	class addFunction;           
+	typedef class addFunction addFunction;
+																	
+	class addFunction
+	{
+		/* 필드 변수 선언 */        
+		int num1;         
+		int num2;         
+																		
+		/* 캡슐화를 돕는 구조체 포인터 전방에 선언해주고 후방에는 피라메터로 함수 포인터와 지역 인수들을 선언해준다.*/
+		/* 피라메타의 선언이 짧아지고 쉬워졌다. */ 
+		void (*setAdd)(addFunction *, int, int);
+		int (*getAdd)(const addFunction *);     
+	};        
+																	
+	public void addFunction##_set_Add(addFunction *this, int num1, int num2)
+	{
+		this -> num1 = num1;
+		this -> num2 = num2;
+	}
+																
+	public int addFunction##_get_Add(const addFunction *this)
+	{
+		int result = 0;          
+		result = this->num1 + this->num2; 
+		return result;           
+	}         
+																	
+	addFunction new_##addFunction(void)   
+	{         
+		static addFunction temp =    
+		{ 
+			.num1 = 0,       
+			.num2 = 0,       
+			.setAdd = addFunction##_set_Add,
+			.getAdd = addFunction##_get_Add,
+		};
+		return temp;             
+		}
+	#ifdef __cplusplus
+	}
+	#endif //__cplusplus
+	#endif							
+</code></pre>
+			
+</div>
+<div class="col-12 col-12-small">
+<h2 id="content">main code file</h2>
+<pre><code>
+	//EMSCRIPTEN_KEEPALIVE
+	#include "addFunction.h"
+	#include &lt;stdio.h&gt;
+	#include &lt;emscripten.h&gt;
+
+	int AddResult(int numA, int numB);
+
+	#ifdef __cplusplus
+	extern "C" {
+	#endif
+
+	say_add(addFunction , int)
+
+	EMSCRIPTEN_KEEPALIVE 
+	int AddResult(int numA, int numB)
+	{
+		addFunction add = new_addFunction();
+		add.setAdd(&add, numA, numB);
+		int result = add.getAdd(&add); 
+		return (result);  
+	}
+
+	#ifdef __cplusplus
+	}
+	#endif
+</code></pre>
+</div>
+
+<div class="col-12 col-12-medium">
+<h2 id="content">js code file</h2>
+<pre><code>
+	document.querySelector('.mybutton').addEventListener('click', function() {
+		let AddResult;
+		fetch("./wasm/add.wasm")
+		.then(bytes => bytes.arrayBuffer())
+		.then(mod => WebAssembly.compile(mod))
+		.then(module => { return new WebAssembly.Instance(module)})
+		.then(Instance => {
+			AddResult = Instance.exports.AddResult(numA.value, numB.value);
+			console.log("The AddResult = " + AddResult);
+			document.getElementById("textcontent").innerHTML = "The AddResult = " + AddResult;
+			alert( "방문해주셔서 감사합니다!!\n\n" + "합계는 \n" + AddResult);
+		});
+	}); 	
+</code></pre>
+
+	</div>
+</div>
+</div>

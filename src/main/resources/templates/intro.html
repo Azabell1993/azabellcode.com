@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+<head>
+    <title th:text="${site_title}">Template Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/fold.css" />
+</head>
+<body class="is-preload" style="background-color:#bbfc969f">
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+                <div id="main" >
+                    <div class="inner">
+                        <div>
+							<!-- Header -->
+                                <!-- Banner -->
+                                <section id="banner">
+                                        <div class="cursor" > 
+                                                <span class="image main">
+                                                    <a th:href="@{/index}">
+                                                        <div class="move-image">
+                                                        <img src="images/mainLogo.png" style="width: 70%; height:auto; text-align : center;" alt="" />
+                                                            <h1> AZABELLCODE</h1>
+                                                            <h2>since 2023</h2>
+                                                            <footer id="footer">
+                                                                <p class="copyright">&copy; Azabell1993 </p>
+                                                            </footer>
+                                                        </div>
+                                                    </a></span>
+                                                    
+                                         </div>
+								</section>
+						</div>
+						
+						<!-- insert main content -->
+                        
+                        
+						<div>
+                        <section include-html="/main/foot.html"></section>
+                    </div>
+                    </div>
+                </div>
+
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        
+</body>
+    <script>
+        let x = 0,
+        y = 0,
+        mouseX = 0,
+        mouseY = 0,
+        angleX = 0,
+        angleY = 0,
+        fmouseX = 0,
+        fmouseY = 0;
+        document.addEventListener("mousemove", function(e){
+            x = e.pageX;
+            y = e.pageY;
+
+            mouseX = Math.max(-20, Math.min(50, window.innerWidth/2 - x));
+            mouseY = Math.max(-20, Math.min(50, window.innerHeight/2 - y));
+
+            angleX = (12 * mouseX) / 80;
+            angleY = (12 * mouseY) / 80;
+            
+            fmouseX += (angleX - fmouseX) * 0.4;
+            fmouseY += (angleY - fmouseY) * 0.1;
+
+            const move = document.querySelector(".move-image");
+            move.style.transform = "translate(-0.5%, -0.8%) perspective(500px) rotateX("+fmouseY+"deg) rotateY("+ -fmouseX+"deg)";
+        });
+
+    </script>
+
+
+</html>

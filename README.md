@@ -1,5 +1,10 @@
 ﻿# azabellcode.com
  
+ 개인적으로 운영하고 있는 블로그의 소스코드를 공개로 전환하였습니다.
+ 현업이 있기 때문에 천천히 하나씩 기능을 추가하는 중 입니다.
+
+블로그의 취지는 WASM의 기술을 직접 블로그에 신연 및 공부를 하면서 정보를 공유하기 위해서 입니다.
+ 
  # DataBase 
  - mysql
  src\main\resources\application.properties
@@ -26,3 +31,24 @@ logging.level.org.springframework.web=debug
 
 mybatis.mapper-locations=classpath:/mapper/**/*.xml
  ```
+ 
+# HOW?
+- DB : MySQL
+- SERVER : Window11
+- HTTPS : CloudFlare
+- CLIENT : LINUX, WINDOW, MAC 
+- WAR로 베포합니다.
+``` 
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
+	compileOnly 'org.projectlombok:lombok'
+   	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+```

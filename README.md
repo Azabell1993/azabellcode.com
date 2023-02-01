@@ -73,26 +73,24 @@ dependencies {
                 <div id="main">
                     <div class="inner">
                         <div>
-							<!-- Header -->
-								<header id="header">
-									<a th:href="@{/index}" class="logo"><strong>AZABELLCODE</strong> by Azabell1993</a>
-									<ul class="icons">
-										소스코드 바로가기 <li><a onclick="window.open('https://github.com/Azabell1993/ClangStructPointerExample')" class="icon brands fa-github"></a></li>
-									</ul>
-								</header>
+			<!-- Header -->
+				<header id="header">
+				<a th:href="@{/index}" class="logo"><strong>AZABELLCODE</strong> by Azabell1993</a>
+				<ul class="icons">
+					소스코드 바로가기 <li><a onclick="window.open('https://github.com/Azabell1993/ClangStructPointerExample')" class="icon brands fa-github"></a></li>
+				</ul>
+				</header>
 						
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-						
-									</div>
-								</section>
-							</div>
-						
-						<!-- insert main content -->
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+					</div>
+				</section>
+			</div>
+				
+			<!-- insert main content -->
                         <th:block th:replace="/main/main_insert.html :: indexFragment"></th:block>
-                        
-						<div>
+                        <div>
                         <section include-html="/main/foot.html"></section>
                     </div>
                     </div>
@@ -123,7 +121,13 @@ dependencies {
       });
     });
     </script>
-
-
 </html>
 ```
+
+- 기본적으로 타임리프를 사용하면서 페이지 이동을 하였습니다.
+```
+<th:block th:replace="/main/main_insert.html :: indexFragment"></th:block>
+```
+- WASM 기술 사용도 잘 연동이 되는 예제를 보실 수 있습니다.
+- 계속하여서 추가 예정 입니다.
+https://github.com/Azabell1993/azabellcode.com/blob/f2fd97e43240f2a768ae57846bf30c87a0cf628e/src/main/resources/templates/main/main_insert.html#L4-L18

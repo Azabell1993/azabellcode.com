@@ -27,14 +27,6 @@
         WHERE 	B.MEMBER_ID LIKE '%';
     </select>
 
-    <select id="boardSQLMAP" resultType="com.azabellcode.start.dto.Board">
-        select idx ,title ,content ,createdDate from board;
-    </select>
-    
-    <insert id="boardSQLINSERT">
-        INSERT INTO board (idx ,title ,content ,createdDate, password) VALUES (#{idx}, #{title}, #{content}, cast(NOW() as CHAR) , #{password});
-    </insert>
-
     <select id="date" resultType="com.azabellcode.start.dto.DateDto">
         SELECT now() from dual;
     </select>

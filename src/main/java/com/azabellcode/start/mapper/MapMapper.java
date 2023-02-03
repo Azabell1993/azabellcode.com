@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 
+import com.azabellcode.start.dto.BoardDTO;
 import com.azabellcode.start.dto.MapDto;
 import com.azabellcode.start.dto.MembertblDto;
 import com.azabellcode.start.dto.testMapbSQLMAPDto;
@@ -15,6 +16,5 @@ public interface MapMapper {
 	public List<testMapbSQLMAPDto> testMapbSQLMAP();
 	public List<MembertblDto> membertblSQLMAP();
 	public int membertblSQLMAPCOUNT();
-
 	public int date();
 }

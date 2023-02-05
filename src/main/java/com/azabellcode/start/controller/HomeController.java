@@ -1,6 +1,5 @@
 package com.azabellcode.start.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,7 +84,6 @@ public class HomeController {
 		model.addAttribute("site_title", projectName);
 		return "main/elements";
 	}
-
 
 	@RequestMapping(value="/sqltest", method=RequestMethod.GET)
 	public String sqltest(Model model) {

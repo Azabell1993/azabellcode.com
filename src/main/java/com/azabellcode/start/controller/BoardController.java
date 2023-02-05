@@ -1,5 +1,6 @@
 package com.azabellcode.start.controller;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,29 @@ import org.springframework.ui.Model;
 
 @Controller
 @RequiredArgsConstructor
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.azabellcode.start.dto.BoardDTO;
+import com.azabellcode.start.mapper.BoardMapper;
+
+@Controller
+@RequiredArgsConstructor    
+>>>>>>> 24e21efcbb1629616b4954d556c6bb8b1fb02c75
 public class BoardController {
     	
 	@Value("${project.name}")
 	String projectName;
+<<<<<<< HEAD
     
     @Autowired
     private BoardService boardService; //서비스와 연결
@@ -57,3 +77,23 @@ public class BoardController {
 
     
 }
+=======
+
+
+	@Autowired
+	private BoardMapper boardMapper;
+
+    
+    @RequestMapping(value="/board", method=RequestMethod.GET)
+	public String board(Model model) {
+		model.addAttribute("site_title", projectName);
+		System.out.println("came");
+        System.out.println(boardMapper.boardMap());
+		model.addAttribute("site_title", projectName);
+		model.addAttribute("boardlist", boardMapper.boardMap());
+
+		return "board/board";
+	}
+	
+}
+>>>>>>> 24e21efcbb1629616b4954d556c6bb8b1fb02c75

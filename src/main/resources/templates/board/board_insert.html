@@ -1,5 +1,6 @@
 <!--footerFragment 선언-->
 <div th:fragment="indexFragment">
+<<<<<<< HEAD
 	<div class="container">
 		<h2>게시글 목록</h2>
 		<table class="board_list">
@@ -37,3 +38,87 @@
 
 	</div>
 </div>
+=======
+	<section id="banner">
+		<div class="content">
+			<header>
+				<h1>블로그 주인장 소개<h1><br />
+			</header>
+		</div>
+		<style>
+			.wrapper {
+				margin: 10px;
+				height: calc*(100% - 100px);
+				width: 100%;
+				position: center;
+				box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+				background: transparent;
+				border-radius: 10px;
+			}
+			.title {
+				font-size: 1.3em;
+				font-weight: 500;
+				position: relative;
+				padding-left: 20px;
+			}
+			.description {
+				margin-top: 20px;
+				font-size: 0.95em;
+				color: rgb(104, 104, 104);
+			}
+			img {
+				vertical-align: middle;
+				border-style: none;
+			}
+			.date {
+				text-align: right;
+				font-size: 0.8em;
+			}
+		</style>
+	</section>
+			<!-- Content -->
+				<h2 id="content">게시판</h2>
+
+				<div class="table-wrapper">
+					<table class="alt">
+						  <tbody>
+							<tr>
+								<td>idx</td>
+								<td>title</td>
+								<td>content</td>
+								<td>writer</td>
+								<td>view_cnt</td>
+								<td>notice_yn</td>
+								<td>secret_yn</td>
+								<td>delete_yn</td>
+								<td>insert_time</td>
+								<td>update_time</td>
+								<td>delete_time</td>
+							</tr>
+						  </tbody>
+						<tbody>
+							<tr th:each="testlist : ${boardlist}">
+							  <td th:text="${testlist.idx}">aa</td>
+							  <td th:text="${testlist.title}">aa</td>
+							  <td th:text="${testlist.content}">aa</td>
+							  <td th:text="${testlist.writer}">aa</td>
+							  <td th:text="${testlist.view_cnt}">aa</td>
+							  <td th:text="${testlist.notice_yn}">aa</td>
+							  <td th:text="${testlist.secret_yn}">aa</td>
+							  <td th:text="${testlist.delete_yn}">aa</td>
+							  <td th:text="${testlist.insert_time}">aa</td>
+							  <td th:text="${testlist.update_time}">aa</td>
+							  <td th:text="${testlist.delete_time}">bb</td>
+						  </tr>
+					  </tbody>
+					</table>
+				</div>
+					
+			<hr class="major" />
+	
+		</div>
+	</div>
+	</div>
+	
+	
+>>>>>>> 24e21efcbb1629616b4954d556c6bb8b1fb02c75

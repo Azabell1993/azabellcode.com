@@ -26,9 +26,12 @@ public class MvcConfiguration implements WebMvcConfigurer{
 											,"classpath:/templates/assets/wasm"
 											,"classpath:/templates/main"
 											,"classpath:/templates/product"
+											,"classpath:/templates/board"
 											
 											)
 											
 		 .setCacheControl(CacheControl.maxAge(50, TimeUnit.MINUTES));
 		}
+
+		
 }

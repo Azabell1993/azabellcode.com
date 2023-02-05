@@ -1,0 +1,27 @@
+<!--footerFragment 선언-->
+<div th:fragment="indexFragment">
+	<div class="container">
+		<h2>게시판 등록</h2>
+		<form id="frm" name="frm" method="post" action="/board/insertBoard.do"
+			<table class="board_detail">
+				<tr>
+					<td>제목</td>
+					<td><input type="text" id="title" name="title"></td>
+				</tr><br/>               
+                <tr>
+					<td colspan="2">작성자</td>
+                    <td><input type="text" id="creatorId" name="creatorId"></td>
+					</td>
+				</tr><br/>
+				<tr>
+					<td colspan="2">내용</td>
+						<textarea id="contents" name="contents"></textarea>
+					</td>
+				</tr><br/>
+ 
+			</table>
+			<input type="submit" id="submit" value="저장" class="btn">
+		</form>
+	</div>
+    </div>
+    <hr class="major"/>

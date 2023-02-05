@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'war'
-	id 'org.springframework.boot' version '2.7.5'
+	id 'org.springframework.boot' version '2.7.8'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
@@ -27,20 +27,15 @@ dependencies {
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
-   	compileOnly 'org.projectlombok:lombok:1.18.10' //gradle 5.0 이상이면 1.18.10을 추가해줘야 제대로 적용
-	testCompileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	compileOnly 'org.projectlombok:lombok'
+   	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok:1.18.10' //1.18.10을 추가해줘야 제대로 적용
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
 }
 
 tasks.named('test') {

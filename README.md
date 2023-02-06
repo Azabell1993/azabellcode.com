@@ -30,6 +30,7 @@ logging.level.org.springframework=debug
 logging.level.org.springframework.web=debug
 
 mybatis.mapper-locations=classpath:/mapper/**/*.xml
+mybatis.configuration.map-underscore-to-camel-case=true
  ```
  
 # HOW?

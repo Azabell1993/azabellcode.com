@@ -6,11 +6,12 @@
 	<!-- <select> 태그를 이용하여 select 쿼리임을 나타냄. 앞서 mapper에서 말했던 메소드의 이름은 select 쿼리의 id값과 같아야함. -->
 		<select id="selectBoardList" resultType="com.azabellcode.start.dto.BoardDto">
 			<![CDATA[
-				SELECT board_idx, title, contents, creator_id, DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime, hit_cnt
+				SELECT 
+					board_idx, title, contents, creater_id, DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime, hit_cnt
 				FROM 
-					T_BOARD TB
-				WHERE
-					deleted_yn = 'N'
+					BOARD B
+				WHERE 
+					B.delete_yn = 'N'
 				ORDER BY 
 					board_idx DESC
 			]]>
@@ -18,27 +19,18 @@
 
 		<insert id="insertBoard" parameterType="com.azabellcode.start.dto.BoardDto">
 			<![CDATA[
-				INSERT INTO t_board
-				(
-					title, contents, created_datetime, creator_id
-				)
-				VALUES
-				(
+				INSERT INTO BOARD (
+					title                
+					,contents         
+					,creater_id
+					,created_datetime
+				) VALUES (
 					#{title},
 					#{contents},
-					NOW(),
-					#{creatorId}
+					#{createrId},
+					NOW()
 				)
 			]]>
 		</insert>
 
-		<select id="boardListMap" resultType="com.azabellcode.start.dto.BoardDto">
-			SELECT board_idx, title, contents, creator_id, DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime, hit_cnt
-			FROM 
-				T_BOARD TB
-			WHERE
-				deleted_yn = 'N'
-			ORDER BY 
-				board_idx DESC
-		</select>
 </mapper>

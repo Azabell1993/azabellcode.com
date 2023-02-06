@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.azabellcode.start.dto.BoardDto;
-import com.azabellcode.start.mapper.BoardMapper;
 import com.azabellcode.start.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,10 +25,6 @@ public class BoardController {
     
     @Autowired
     private BoardService boardService; //서비스와 연결
-
-    @Autowired
-    private BoardMapper boardMapper;
-
 
     @RequestMapping("/board/openBoardList.do") //노테이션의 값으로 주소 지정
     public ModelAndView openBoardList(Model model) throws Exception{
@@ -48,12 +43,11 @@ public class BoardController {
     public String openBoardWrite() throws Exception{
     	return "/board/write";
     }
-    
+
     @RequestMapping("/board/insertBoard.do")		//작성된 게시글 등록 기능 메소드, html의 form 태그 action에서 입력한 주소
     public String insertBoard(@ModelAttribute BoardDto board) throws Exception{
     	boardService.insertBoard(board);
     	return "redirect:/board/openBoardList.do";	//게시글 리스트로 이동
     }
-
     
 }

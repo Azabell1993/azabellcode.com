@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.azabellcode.start.mapper.BoardMapper;
 import com.azabellcode.start.dto.BoardDto;
+import com.azabellcode.start.dto.TBoardDto;
 
 import java.util.List;
 

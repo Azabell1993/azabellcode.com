@@ -2,7 +2,6 @@ package com.azabellcode.start.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import com.azabellcode.start.dto.BoardDto;
-import com.azabellcode.start.dto.TBoardDto;
 
 import java.util.List;
 

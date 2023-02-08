@@ -43,6 +43,7 @@ public class BoardController {
     public String openBoardWrite(@ModelAttribute BoardDto board) throws Exception {
     	return "/board/write";
     }
+    
 
     @RequestMapping("/board/insertBoard.do")		//작성된 게시글 등록 기능 메소드, html의 form 태그 action에서 입력한 주소
     public String insertBoard(@ModelAttribute BoardDto board) throws Exception{

@@ -10,6 +10,7 @@ public class BoardDto {
             title               VARCHAR(100)        NOT NULL                    COMMENT '제목',
             contents             VARCHAR(3000)       NOT NULL                    COMMENT '내용',
             creater_id          VARCHAR(20)         NOT NULL                    COMMENT '작성자',
+            password          VARCHAR(20)         NOT NULL                      COMMENT '패스워드',
             hit_cnt             INT                 NOT NULL DEFAULT 0          COMMENT '조회 수',
             notice_yn           ENUM('Y','N')       NOT NULL DEFAULT 'N'        COMMENT '공지글 여부',
             secret_yn           ENUM('Y','N')       NOT NULL DEFAULT 'N'        COMMENT '비밀글 여부',

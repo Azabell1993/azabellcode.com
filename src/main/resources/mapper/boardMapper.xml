@@ -23,11 +23,13 @@
 					title                
 					,contents         
 					,creater_id
+					,password
 					,created_datetime
 				) VALUES (
 					#{title},
 					#{contents},
 					#{createrId},
+					#{password},
 					NOW()
 				)
 			]]>

@@ -40,7 +40,7 @@ public class BoardController {
     }
 
     @RequestMapping("/board/openBoardWrite.do")		//게시글 작성 화면 호출
-    public String openBoardWrite() throws Exception{
+    public String openBoardWrite(@ModelAttribute BoardDto board) throws Exception {
     	return "/board/write";
     }
 

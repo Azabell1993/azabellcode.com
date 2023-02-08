@@ -26,6 +26,7 @@ public class BoardDto {
     private String title;
     private String contents;
     private String createrId;
+    private String password;
     private int  hitCnt;
     private String noticeYn;
     private String secretYn;
@@ -42,6 +43,7 @@ public class BoardDto {
                 ", title=" + title + 
                 ", contents=" + contents + 
                 ", createrId=" + createrId + 
+                ", password=" + password + 
                 ", hitCnt=" + hitCnt + 
                 ", secretYn=" + secretYn + 
                 ", updatedDatetime=" + updatedDatetime + 

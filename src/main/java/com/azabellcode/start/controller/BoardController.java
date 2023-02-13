@@ -40,8 +40,13 @@ public class BoardController {
     }
 
     @RequestMapping("/board/openBoardWrite.do")		//게시글 작성 화면 호출
+<<<<<<< HEAD
     public String openBoardWrite() throws Exception{
     	return "thymeleaf/board/write";
+=======
+    public String openBoardWrite(@ModelAttribute BoardDto board) throws Exception {
+    	return "/board/write";
+>>>>>>> 04e702be654449a4e8aae21d500b6622a92b0d91
     }
     
 

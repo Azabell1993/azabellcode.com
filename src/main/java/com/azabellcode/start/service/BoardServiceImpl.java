@@ -23,4 +23,7 @@ public class BoardServiceImpl implements BoardService {
 	public void insertBoard(BoardDto board) throws Exception {
 		boardMapper.insertBoard(board);
 	}
+
+
 }
+

@@ -32,10 +32,9 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	
+	// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
+	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.63'
+
 }
 
 tasks.named('test') {

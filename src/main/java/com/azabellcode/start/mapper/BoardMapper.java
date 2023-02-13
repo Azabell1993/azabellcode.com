@@ -11,4 +11,7 @@ public interface BoardMapper {
 	public List<BoardDto> selectBoardList() throws Exception; 
 
     void insertBoard(BoardDto board) throws Exception;		//게시판 쓰기
+    
+
+
 }

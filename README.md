@@ -90,16 +90,16 @@ dependencies {
 			</div>
 				
 			<!-- insert main content -->
-                        <th:block th:replace="/main/main_insert.html :: indexFragment"></th:block>
+                        <th:block th:replace="thymeleaf/main/main_insert.html :: indexFragment"></th:block>
                         <div>
-                        <section include-html="/main/foot.html"></section>
+                        <section include-html="thymeleaf/main/foot.html"></section>
                     </div>
                     </div>
                 </div>
 
                 <div id="sidebar">
                     <div class="inner">
-                        <th:block th:replace="/main/menu.html :: mennuFragment"></th:block>
+                        <th:block th:replace="thymeleaf/main/menu.html :: mennuFragment"></th:block>
                     </div>
                 </div>
         </div>
@@ -127,7 +127,7 @@ dependencies {
 
 - 기본적으로 타임리프를 사용하면서 페이지 이동을 하였습니다.
 ```
-<th:block th:replace="/main/main_insert.html :: indexFragment"></th:block>
+<th:block th:replace="thymeleaf/main/main_insert.html :: indexFragment"></th:block>
 ```
 - WASM 기술 사용도 잘 연동이 되는 예제를 보실 수 있습니다.
 - 계속하여서 추가 예정 입니다.

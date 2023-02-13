@@ -33,7 +33,7 @@
 							</div>
 						
 						<!-- insert main content -->
-                        <th:block th:replace="/main/main_insert.html :: indexFragment"></th:block>
+                        <th:block th:replace="thymeleaf/product/editproduct.html :: productFragment"></th:block>
                         
 						<div>
                         <section include-html="/main/foot.html"></section>
@@ -43,7 +43,7 @@
 
                 <div id="sidebar">
                     <div class="inner">
-                        <th:block th:replace="/main/menu.html :: mennuFragment"></th:block>
+                        <th:block th:replace="thymeleaf/main/menu.html :: mennuFragment"></th:block>
                     </div>
                 </div>
         </div>
@@ -52,12 +52,13 @@
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/AddFunction.js"></script>
         <script src="assets/js/innerHTML.js"></script>
         <script src="assets/js/includeRouter.js"></script>
         
         <!-- add Scripts -->
-        <script src="/assets/js/AddFunction.js"></script>
-        
+        <script src="/product/editproduct.js"></script>
+        <script src="/product/validate.js"></script>
 </body>
     <script>
     includeHTML( function () {

@@ -32,7 +32,7 @@ public class BoardController {
 		model.addAttribute("site_title", projectName);
         
     	//templates 폴더 아래있는 /boardList.html을 의미함. Thymeleaf와 같은 템플릿엔진을 사용할 경우 스프링 부트의 자동 설정 기능으로 '.html'과 같은 접미사 생략 가능
-    	ModelAndView mv = new ModelAndView("/board/board"); 
+    	ModelAndView mv = new ModelAndView("thymeleaf/board/board"); 
         //게시글 목록을 조회하기 위해 ServiceImpl 클래스의 selectBoardList 메서드 호출
         List<BoardDto> boardlist = boardService.selectBoardList();  
         mv.addObject("list", boardlist);
@@ -41,14 +41,14 @@ public class BoardController {
 
     @RequestMapping("/board/openBoardWrite.do")		//게시글 작성 화면 호출
     public String openBoardWrite() throws Exception{
-    	return "/board/write";
+    	return "thymeleaf/board/write";
     }
     
 
     @RequestMapping("/board/insertBoard.do")		//작성된 게시글 등록 기능 메소드, html의 form 태그 action에서 입력한 주소
     public String insertBoard(@ModelAttribute BoardDto board) throws Exception{
     	boardService.insertBoard(board);
-    	return "redirect:/board/openBoardList.do";	//게시글 리스트로 이동
+    	return "redirect:thymeleaf/board/openBoardList.do";	//게시글 리스트로 이동
     }
     
 }

@@ -19,9 +19,7 @@
 							<!-- Header -->
 								<header id="header">
 									<a th:href="@{/index}" class="logo"><strong>AZABELLCODE</strong> by Azabell1993</a>
-									<ul class="icons">
-										소스코드 바로가기 <li><a onclick="window.open('https://github.com/Azabell1993/ClangStructPointerExample')" class="icon brands fa-github"></a></li>
-									</ul>
+									
 								</header>
 						
 							<!-- Banner -->
@@ -33,7 +31,7 @@
 							</div>
 						
 						<!-- insert main content -->
-                        <section include-html="/generic/pointer.html"></section>
+                        <th:block th:replace="thymeleaf/login/login_insert.html :: indexFragment"></th:block>
                         
 						<div>
                         <section include-html="/main/foot.html"></section>
@@ -43,11 +41,10 @@
 
                 <div id="sidebar">
                     <div class="inner">
-                        <th:block th:replace="/main/menu.html :: mennuFragment"></th:block>
+                        <th:block th:replace="thymeleaf/main/menu.html :: mennuFragment"></th:block>
                     </div>
                 </div>
         </div>
-		
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/browser.min.js"></script>
         <script src="assets/js/breakpoints.min.js"></script>
@@ -55,8 +52,10 @@
         <script src="assets/js/main.js"></script>
         <script src="assets/js/innerHTML.js"></script>
         <script src="assets/js/includeRouter.js"></script>
-    		
-
+        
+        <!-- add Scripts -->
+        <script src="/assets/js/loginAPI/login.js"></script>
+        
 </body>
     <script>
     includeHTML( function () {

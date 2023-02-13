@@ -32,57 +32,61 @@ public class HomeController {
 	public String home(Model model) {
         System.out.println("came");
 		model.addAttribute("site_title", projectName);
-		return "intro";
-	}
-	@RequestMapping(value="/sample", method=RequestMethod.GET)
-	public String elements(Model model) {
-		model.addAttribute("site_title", projectName);
-		return "/main/elements";
-	}
-	@RequestMapping(value="/generic", method=RequestMethod.GET)
-	public String generic(Model model) {
-		model.addAttribute("site_title", projectName);
-		return "/main/generic";
-	}
-	@RequestMapping(value="/editproduct", method=RequestMethod.GET)
-	public String editproduct(Model model) {
-		model.addAttribute("site_title", projectName);
-		return "/product/product_body";
-	}
-
-	@RequestMapping(value="/menu", method=RequestMethod.GET)
-	public String menu(Model model) {
-		model.addAttribute("site_title", projectName);
-		return "/main/menu";
-	}
-	@RequestMapping(value="/foot", method=RequestMethod.GET)
-	public String foot(Model model) {
-		model.addAttribute("site_title", projectName);
-		return "/main/foot";
-	}
-
-	@RequestMapping(value="/pointer", method=RequestMethod.GET)
-	public String pointer(Model model) {
-		model.addAttribute("site_title", projectName);
-		return "/main/pointer";
+		return "thymeleaf/intro";
 	}
 
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("site_title", projectName);
-		return "index";
+		return "thymeleaf/index";
 	}
+
+
+	@RequestMapping(value="/sample", method=RequestMethod.GET)
+	public String elements(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/main/elements";
+	}
+	@RequestMapping(value="/generic", method=RequestMethod.GET)
+	public String generic(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/main/generic";
+	}
+	@RequestMapping(value="/editproduct", method=RequestMethod.GET)
+	public String editproduct(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/product/product_body";
+	}
+
+	@RequestMapping(value="/menu", method=RequestMethod.GET)
+	public String menu(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/main/menu";
+	}
+	@RequestMapping(value="/foot", method=RequestMethod.GET)
+	public String foot(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/main/foot";
+	}
+
+	@RequestMapping(value="/pointer", method=RequestMethod.GET)
+	public String pointer(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/main/pointer";
+	}
+
+
 
 	@RequestMapping(value="/introduce", method=RequestMethod.GET)
 	public String introduce(Model model) {
 		model.addAttribute("site_title", projectName);
-		return "main/introduce";
+		return "thymeleaf/main/introduce";
 	}
 
 	@RequestMapping(value="/example", method=RequestMethod.GET)
 	public String example(Model model) {
 		model.addAttribute("site_title", projectName);
-		return "main/elements";
+		return "thymeleaf/main/elements";
 	}
 
 	@RequestMapping(value="/sqltest", method=RequestMethod.GET)
@@ -91,6 +95,6 @@ public class HomeController {
         System.out.println(mapMapper.listMap());
 		model.addAttribute("site_title", projectName);
 		model.addAttribute("list", mapMapper.listMap());
-		return "/product/sqltest";
+		return "thymeleaf/product/sqltest";
 	}
 }

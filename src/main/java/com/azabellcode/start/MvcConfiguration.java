@@ -17,16 +17,16 @@ public class MvcConfiguration implements WebMvcConfigurer{
 	 @Override
 	 public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		 registry.addResourceHandler("/**")
-		 .addResourceLocations("classpath:/templates/"
-											,"classpath:/templates/**/"
+		 .addResourceLocations("classpath:/templates/thymeleaf/"
+											,"classpath:/templates/thymeleaf/**/"
 											
-											,"classpath:/templates/assets/"
-											,"classpath:/templates/assets/js"
-											,"classpath:/templates/assets/sass"
-											,"classpath:/templates/assets/wasm"
-											,"classpath:/templates/main"
-											,"classpath:/templates/product"
-											,"classpath:/templates/board"
+											,"classpath:/templates/thymeleaf/assets/"
+											,"classpath:/templates/thymeleaf/assets/js"
+											,"classpath:/templates/thymeleaf/assets/sass"
+											,"classpath:/templates/thymeleaf/assets/wasm"
+											,"classpath:/templates/thymeleaf/main"
+											,"classpath:/templates/thymeleaf/product"
+											,"classpath:/templates/thymeleaf/board"
 											
 											)
 											

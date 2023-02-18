@@ -9,21 +9,25 @@
  - mysql (Git Ignore File)
  src\main\resources\application.properties
  ```c
- project.name=azabellcodeblog
+project.name=azabellcodeblog
 
 # LOCAL
-server.port=8081
-spring.datasource.url=jdbc:mysql://localhost:3306/db?useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC
+server.port=8080
+spring.datasource.url=jdbc:mysql://localhost:port/db?useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC
 
 spring.freemarker.cache=false
-spring.thymeleaf.cache=false
 
+# 타임리프, jsp 공통 설정
+spring.mvc.view.prefix=WEB-INF/views/
+spring.mvc.view.suffix=.jsp
 spring.thymeleaf.prefix=classpath:/templates/
 spring.thymeleaf.suffix=.html
-server.servlet.jsp.init-parameters.development=true
+spring.thymeleaf.cache=false
 
-spring.datasource.username=
-spring.datasource.password=
+spring.thymeleaf.view-names=thymeleaf/*
+
+spring.datasource.username=dbusername
+spring.datasource.password=dbuserpassword
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 logging.level.org.springframework=debug

@@ -13,7 +13,7 @@ project.name=azabellcodeblog
 
 # LOCAL
 server.port=8080
-spring.datasource.url=jdbc:mysql://localhost:port/db?useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC
+spring.datasource.url=jdbc:mysql://localhost:port/DB?useSSL=true&characterEncoding=UTF-8&serverTimezone=UTC
 
 spring.freemarker.cache=false
 
@@ -26,8 +26,8 @@ spring.thymeleaf.cache=false
 
 spring.thymeleaf.view-names=thymeleaf/*
 
-spring.datasource.username=dbusername
-spring.datasource.password=dbuserpassword
+spring.datasource.username=
+spring.datasource.password=
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 logging.level.org.springframework=debug
@@ -35,6 +35,11 @@ logging.level.org.springframework.web=debug
 
 mybatis.mapper-locations=classpath:/mapper/**/*.xml
 mybatis.configuration.map-underscore-to-camel-case=true
+
+# Encoding 설정
+server.servlet.encoding.charset=UTF-8
+server.servlet.encoding.enabled=true
+server.servlet.encoding.force=true
  ```
  
 # HOW?

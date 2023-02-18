@@ -35,6 +35,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
 	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.63'
 
+	// jstl
+	implementation 'javax.servlet:jstl:1.2'
+
 }
 
 tasks.named('test') {

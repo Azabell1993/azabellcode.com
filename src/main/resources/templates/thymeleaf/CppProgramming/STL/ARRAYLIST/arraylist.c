@@ -2,16 +2,6 @@
 #include <stdio.h>
 DECLARE_ARRAY_LIST(ArrayList, int);
 
-typedef struct {
-    size_t capacity;
-    size_t length;
-    ArrayList *list;
-} int_list;
-
-size_t list_size(int_list* list) {
-    return list->length;
-}
-
 int main() {
     ArrayList list = new_ArrayList();
 
@@ -23,7 +13,7 @@ int main() {
     // Print the list contents
     printf("List contents:\n");
     list.size;
-    for (size_t i = 0; i < list_size(&list); i++) {
+    for (size_t i = 0; i < list.get_size(&list); i++) {
         printf("%d\n", list.at(&list, i));
     }
 
@@ -36,7 +26,7 @@ int main() {
 
     // Print the list contents again
     printf("List contents:\n");
-    for (size_t i = 0; i < list_size(&list); i++) {
+    for (size_t i = 0; i < list.get_size(&list); i++) {
         printf("%d\n", list.at(&list, i));
     }
 

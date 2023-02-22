@@ -28,87 +28,87 @@
         <li>
             <span class="opener">C++</span>
             <ul>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
             </ul>
         </a></li>
         <li>
             <span class="opener">ASSEMBLY</span>
             <ul>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
             </ul>
         </a></li>
         <li>
             <span class="opener">JS</span>
             <ul>
-                <li>< a href="/">.wasm과 JS</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
+                <li><a href="#">.wasm과 JS</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
             </ul>
         </a></li>
         <li>
             <span class="opener">Unity</span>
             <ul>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
             </ul>
         </a></li>
         <li>
             <span class="opener">WASM MAPPING SPACE</span>
             <ul>
                 <li><a th:href="@{/editproduct}">TEST BASIC SAMPLE</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
             </ul>
         </a></li>
         <li>
             <span class="opener">PORTFOLIO</span>
             <ul>
-                <li>< a href="/">GITHUB BY TOPIC</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
+                <li><a href="#">GITHUB BY TOPIC</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
             </ul>
         </a></li>
         <li>
             <span class="opener">TALK ABOUT OTHER LAGNAGUES</span>
             <ul>
-                <li>< a href="/">C#</a></li>
-                <li>< a href="/">Java</a></li>
-                <li>< a href="/">go</a></li>
-                <li>< a href="/">Rust</a></li>
-                <li>< a href="/">etc..</a></li>
+                <li><a href="#">C#</a></li>
+                <li><a href="#">Java</a></li>
+                <li><a href="#">go</a></li>
+                <li><a href="#">Rust</a></li>
+                <li><a href="#">etc..</a></li>
             </ul>
         </a></li>
         <li>
             <span class="opener">CHAT</span>
             <ul>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
-                <li>< a href="/">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
+                <li><a href="#">Waiting...</a></li>
             </ul>
         </a></li>
         <li>
             <span class="opener">MEMOIR BY YEAR</span>
             <ul>
-                <li>< a href="/">2023</a></li>
-                <li>< a href="/">2024</a></li>
-                <li>< a href="/">2025</a></li>
-                <li>< a href="/">2026</a></li>
-                <li>< a href="/">2027</a></li>
-                <li>< a href="/">2028</a></li>
-                <li>< a href="/">2029</a></li>
-                <li>< a href="/">2030</a></li>
+                <li><a href="#">2023</a></li>
+                <li><a href="#">2024</a></li>
+                <li><a href="#">2025</a></li>
+                <li><a href="#">2026</a></li>
+                <li><a href="#">2027</a></li>
+                <li><a href="#">2028</a></li>
+                <li><a href="#">2029</a></li>
+                <li><a href="#">2030</a></li>
             </ul>
         </a></li>
         <li><a href="/board/openBoardList.do">NOTICE</a></li>

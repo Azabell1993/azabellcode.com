@@ -13,13 +13,13 @@
 <!-- Preformatted Code -->
 <pre><code>public class CalculatorClass {
 	
-    // 필드 선언
+// 필드 선언
 public double input_NumA;
 public double input_NumB;
 public char op;
 public double result;
 
-    // 메서드 선언
+// 메서드 선언
 }
 </code></pre>
 <!-- Preformatted Code -->
@@ -91,18 +91,18 @@ public void div() {
 
 <!-- Preformatted Code -->
 <pre><code>// setter 함수
-    private void setInput_Values(double input_NumA2, char op2, double input_NumB2, double result2) {
-            if(op == '+') { add(); }
-            else if(op == '-') { sub(); }
-            else if(op == '*') { mul(); }
-            else if(op == '/') { div(); }
-            return;
-        }
-    
-        // getter 함수
-        public void getInput_Values(double input_NumA2, char op2, double input_NumB2, double result2) {
-            setInput_Values(this.input_NumA, this.op, this.input_NumB, this.result);
-        }
+private void setInput_Values(double input_NumA2, char op2, double input_NumB2, double result2) {
+    if(op == '+') { add(); }
+    else if(op == '-') { sub(); }
+    else if(op == '*') { mul(); }
+    else if(op == '/') { div(); }
+    return;
+}
+
+// getter 함수
+public void getInput_Values(double input_NumA2, char op2, double input_NumB2, double result2) {
+    setInput_Values(this.input_NumA, this.op, this.input_NumB, this.result);
+}
 </code></pre>
 <!-- Preformatted Code -->
 

@@ -89,6 +89,14 @@ public class HomeController {
 		return "thymeleaf/main/elements";
 	}
 
+	@RequestMapping(value="/eduoopc", method=RequestMethod.GET)
+	public String oopClang(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/eduOOP/oopClang";
+	}
+
+
+
 	@RequestMapping(value="/sqltest", method=RequestMethod.GET)
 	public String sqltest(Model model) {
         System.out.println("came");

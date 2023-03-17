@@ -20,7 +20,7 @@
             <span class="opener">C</span>
             <ul>
                 <li><a href="/oopClang">Procedural and object oriented</a></li>
-                <li><a href="#">A story about object-like implementation in C language</a></li>
+                <li><a href="/exampleClang">Basic C example</a></li>
                 <li><a href="#">Pointer Bible</a></li>
                 <li><a href="#">Differences between C and C++</a></li>
             </ul>
@@ -111,7 +111,6 @@
                 <li><a href="#">2030</a></li>
             </ul>
         </a></li>
-        <li><a href="/board/openBoardList.do">NOTICE</a></li>
     </ul>
 </nav>
 <!-- Section -->

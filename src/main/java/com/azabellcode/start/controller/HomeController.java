@@ -95,6 +95,12 @@ public class HomeController {
 		return "thymeleaf/eduOOP/oopClang";
 	}
 
+	@RequestMapping(value="/exampleClang", method=RequestMethod.GET)
+	public String exampleClang(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/eduOOP2/exampleClang";
+	}
+
 
 
 	@RequestMapping(value="/sqltest", method=RequestMethod.GET)

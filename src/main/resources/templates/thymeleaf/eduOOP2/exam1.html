@@ -1,0 +1,97 @@
+<!-- Preformatted Code -->
+<br/>
+<h2>C언어 A + B 기본 예제(add.h)</h2>
+<br/>
+<div>
+    <ul class="alt">
+        <li>C언어에서도 클래스 기능을 유사하게 흉내낼 수 있다.</li>
+        <li><strong>struct(구조체)</strong>를 활용하여서 아래와 같이 선언을 해주고, #define 매크로와 ## 연결 연산자를 사용해주면 아래처럼 작성이 가능하다.</li>
+    </ul>
+</div>
+
+<!-- Preformatted Code -->
+/*
+    add.h
+*/
+<pre><code>#ifndef PROGRAM_H
+#define PROGRAM_H
+
+#include &lt;stdlib.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;assert.h&gt;
+#include &lt;memory.h&gt;
+
+#define class struct
+#define public static __attribute__((visibility("default")))
+#define private static __attribute__((visibility("hidden")))
+
+#ifdef __cheaderfile
+extern "C" {
+#endif
+#ifndef BUILD_MY_DLL
+#define SHARED_LIB __declspec(dllexport)
+#else
+#define SHARED_LIB __declspec(dllexport)
+#endif
+#ifdef _GNUC_
+#define NORETERN _attribute_ ((_noreturn_))
+    /* 함수 전방 선언 */
+    public void SUM##_set_Sum(SUM *this, type *input);
+    public int SUM##_get_Sum(const SUM *this);
+    public size_t SUM##_size(const SUM *this);
+    public void SUM##_for_each_ptr(SUM *this, void (*f)(type *));
+    public void SUM##_for_each(const SUM *this, void (*f)(const type));
+    public inline void init(type *e);
+    public inline void print(type *e);
+
+    /* 비멤버 생성자 전방 선언 */
+    SUM new_##SUM(void);
+#endif
+
+#define SumFunc(SUM, type, length)                                                  \
+                                                                                    \
+    struct SUM;                                                                      \
+    typedef struct SUM SUM;                                                          \
+                                                                                    \
+    struct SUM                                                                       \
+    {                                                                               \
+        type input[length];                                                         \
+                                                                                    \
+        size_t  (*size)(const SUM *);                                               \
+        void    (*setSum)(SUM *, type *);                                          \
+        int     (*getSum)(const SUM *);                                                 \
+        void    (*for_each_ptr)(SUM *,      void(*)(SUM *, type *));                        \
+        void    (*for_each)(const SUM *,    void(*)(const type *));                       \
+    };                                                                              \
+                                                                                    \
+    public void SUM##_set_Sum(SUM *this, type *input) {                             \
+        for(int i=0; i<length; i+=1)                                                \
+            this -> input[i] = input[i];                                            \
+    }                                                                               \
+                                                                                    \
+    public int SUM##_get_Sum(const SUM *this) {                                     \
+        int sum = 0;                                                                \
+        for(int i=0; i<length; i+=1) {                                              \
+            sum += this->input[i];                                                  \
+        }                                                                           \
+        return printf("%d", sum);                                                   \
+    }                                                                               \
+                                                                                    \
+    public size_t SUM##_size(const SUM *this)                                       \
+    {                                                                               \
+        return length;                                                              \
+    }                                                                               \
+                                                                                    \
+    public void SUM##_for_each_ptr(SUM *this, void (*f)(type *))                    \
+    {                                                                               \
+        for (int i = 0; i < length; i+=1)                                           \
+            f(&this->input[i]);                                                     \
+    }                                                                               \
+                                                                                    \
+    public void SUM##_for_each(const SUM *this, void (*f)(const type))              \
+    {                                                                               \
+        for (int i = 0; i < length; i+=1)                                           \
+            f(this->input[i]);                                                      \
+    }                                                                               \
+                                                                                    \
+</code><pre>

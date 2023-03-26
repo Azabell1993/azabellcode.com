@@ -19,6 +19,7 @@ public class HomeController {
 	@Value("${project.name}")
 	String projectName;
 	String subject = "박지우 202234-153230";
+	String subject2 = "모바일 청첩장";
 	private final MapMapper mapMapper;
 
 	/*
@@ -112,6 +113,13 @@ public class HomeController {
 		model.addAttribute("site_title", subject);
 		return "thymeleaf/example/박지우_202234-153230_문제3";
 	}
+
+	@RequestMapping(value="/study1", method=RequestMethod.GET)
+	public String study(Model model) {
+		model.addAttribute("site_title", subject2);
+		return "thymeleaf/example/study1";
+	}
+
 
 	@RequestMapping(value="/sqltest", method=RequestMethod.GET)
 	public String sqltest(Model model) {

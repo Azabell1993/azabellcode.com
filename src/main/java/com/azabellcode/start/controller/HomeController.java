@@ -18,7 +18,7 @@ public class HomeController {
 	
 	@Value("${project.name}")
 	String projectName;
-
+	String subject = "박지우 202234-153230";
 	private final MapMapper mapMapper;
 
 	/*
@@ -101,7 +101,17 @@ public class HomeController {
 		return "thymeleaf/eduOOP2/exampleClang";
 	}
 
+	@RequestMapping(value="/subject_2", method=RequestMethod.GET)
+	public String sub(Model model) {
+		model.addAttribute("site_title", subject);
+		return "thymeleaf/example/박지우_202234-153230_문제2";
+	}
 
+	@RequestMapping(value="/subject_3", method=RequestMethod.GET)
+	public String subt(Model model) {
+		model.addAttribute("site_title", subject);
+		return "thymeleaf/example/박지우_202234-153230_문제3";
+	}
 
 	@RequestMapping(value="/sqltest", method=RequestMethod.GET)
 	public String sqltest(Model model) {

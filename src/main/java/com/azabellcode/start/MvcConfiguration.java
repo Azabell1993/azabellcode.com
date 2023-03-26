@@ -30,6 +30,8 @@ public class MvcConfiguration implements WebMvcConfigurer{
 											,"classpath:/templates/thymeleaf/product"
 											,"classpath:/templates/thymeleaf/board"
 											,"classpath:/templates/thymeleaf/eduOOP"
+											,"classpath:/templates/thymeleaf/example"
+											,"classpath:/templates/thymeleaf/example/**/"
 											)
 											
 		 .setCacheControl(CacheControl.maxAge(50, TimeUnit.MINUTES));

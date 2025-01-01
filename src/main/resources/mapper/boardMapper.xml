@@ -4,6 +4,40 @@
 
 <mapper namespace="com.azabellcode.start.mapper.BoardMapper">
     <select id="findBoardList" parameterType="map" resultType="com.azabellcode.start.dto.BoardDto">
+        WITH RECURSIVE CTE AS (
+            -- 최상위 게시글 가져오기
+            SELECT 
+                board_idx,
+                title,
+                contents,
+                creater_id,
+                parent_idx,
+                depth,
+                created_datetime,
+                hit_cnt
+            FROM 
+                board
+            WHERE 
+                parent_idx IS NULL -- 최상위 게시글
+                AND delete_yn = 'N'
+            UNION ALL
+            -- 답글 가져오기
+            SELECT 
+                b.board_idx,
+                b.title,
+                b.contents,
+                b.creater_id,
+                b.parent_idx,
+                b.depth,
+                b.created_datetime,
+                b.hit_cnt
+            FROM 
+                board b
+            INNER JOIN CTE c
+            ON b.parent_idx = c.board_idx -- 부모-자식 관계 연결
+            WHERE 
+                b.delete_yn = 'N'
+        )
         SELECT 
             board_idx,
             title,
@@ -11,19 +45,17 @@
             creater_id,
             parent_idx,
             depth,
-            DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime
-        FROM board
-        WHERE delete_yn = 'N'
-        ORDER BY
-            CASE
-                WHEN parent_idx IS NULL THEN board_idx -- 부모 게시글은 board_idx 기준
-                ELSE parent_idx -- 답글은 부모의 board_idx 기준
-            END DESC, -- 최신 부모 게시글부터 정렬
-            parent_idx IS NOT NULL, -- 답글은 부모 게시글 다음에 정렬
-            depth ASC, -- 깊이 순서로 정렬
-            created_datetime ASC -- 같은 계층에서는 작성 시간 순으로 정렬
-        LIMIT #{offset}, #{pageSize}
+            DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime,
+            hit_cnt
+        FROM 
+            CTE
+        ORDER BY 
+            COALESCE(parent_idx, board_idx) ASC, -- 부모 기준 최신 순 정렬
+            depth ASC, -- 깊이 순 정렬
+            created_datetime ASC -- 동일 depth 내 시간 순 정렬
+        LIMIT #{offset}, #{pageSize}; -- 페이지네이션 적용
     </select>
+
 
 
     <select id="countAllBoards" resultType="int">

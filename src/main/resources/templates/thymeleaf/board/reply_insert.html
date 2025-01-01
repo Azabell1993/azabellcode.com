@@ -1,7 +1,8 @@
+<!--footerFragment 선언-->
 <div th:fragment="indexFragment">
 	<div class="container">
-		<h2>답글 작성</h2>
-		<form id="frm" name="frm" method="post" action="/board/insertReply.do">
+		<h2>답글 등록</h2>
+		<form id="frm" name="frm" method="post" action="/board/insertBoard.do"
 			<table class="board_detail">
 				<!-- Hidden input for parentIdx -->
 				<input type="hidden" id="parentIdx" name="parentIdx" th:value="${parentBoard.boardIdx}"/>
@@ -22,7 +23,7 @@
 					<td colspan="2">내용</td>
 					<td><textarea id="contents" name="contents"></textarea></td>
 				</tr>
-			</table>
+			</table><br/>
 			<input type="submit" id="submit" value="저장" class="btn">
 		</form>
 	</div>

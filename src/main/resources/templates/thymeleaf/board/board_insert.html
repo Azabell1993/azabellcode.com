@@ -86,15 +86,3 @@
         </div>
     </div>
 </div>
-
-	<!-- <div id="pagination" style="margin-top: 20px;">
-		<a class="btn" th:if="${currentPage > 1}"
-		   th:href="@{/board/openBoardList.do(page=${currentPage - 1})}">이전</a>
-
-		<span th:each="pageNum : ${#numbers.sequence(1, totalPages)}">
-			<a class="btn" th:classappend="${currentPage == pageNum} ? 'active'"
-			   th:href="@{/board/openBoardList.do(page=${pageNum})}" th:text="${pageNum}"></a>
-		</span>
-		<a class="btn" th:if="${currentPage < totalPages}"
-		   th:href="@{/board/openBoardList.do(page=${currentPage + 1})}">다음</a>
-	</div> -->

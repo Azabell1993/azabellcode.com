@@ -1,44 +1,100 @@
-<!--footerFragment 선언-->
 <div th:fragment="indexFragment">
-	<div class="container">
-		<h2>게시글 목록</h2>
-		<table class="board_list">
-			<colgroup>
-				<col width="5%"/>
-				<col width="*"/>
-				<col width="20%"/>
-				<col width="15%"/>
-				<col width="8%"/>
-			</colgroup>
-			<thead>
-				<tr>
-					<th scope="col">글번호</th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">작성일</th>
-					<th scope="col">조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="board : ${list}">
-					<td th:text="${board.boardIdx}"></td>
-					<td>
-						<span th:if="${board.parentIdx != null}" class="reply-arrow">↳</span>
-						<a th:href="@{/board/openBoardDetail.do(boardIdx=${board.boardIdx})}" th:text="${board.title}"></a>
-					</td>
-					<td th:text="${board.createrId}"></td>
-					<td th:text="${board.createdDatetime}"></td>
-					<td th:text="${board.hitCnt}"></td>
-				</tr>
+    <!-- 글쓰기 버튼 -->
+    <a class="btn-write" th:href="@{/board/openBoardWrite.do}">글쓰기</a>
 
-				<tr th:unless="${#lists.size(list)} > 0">
-					<td colspan="5">조회된 결과가 없습니다.</td>
-				</tr>
-			</tbody>
+    <style>
+        .btn-write {
+            float: right;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff; /* 기본 색상 */
+            color: #fff; /* 텍스트 색상 */
+            text-decoration: none; /* 밑줄 제거 */
+            border: none;
+            border-radius: 5px; /* 둥근 테두리 */
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 버튼 그림자 */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* 애니메이션 효과 */
+        }
 
-		</table>
+        .btn-write:hover {
+            background-color: #0056b3; /* 호버 시 색상 */
+            transform: scale(1.05); /* 살짝 확대 */
+        }
 
-		<a style="float: right" class="btn" th:href="@{/board/openBoardWrite.do}">글쓰기</a>
+        .btn-write:active {
+            background-color: #004085; /* 클릭 시 색상 */
+            transform: scale(0.98); /* 살짝 축소 */
+        }
+    </style>
+    <div class="container">
+        <h2>게시글 목록</h2>
+        <table class="board_list">
+            <colgroup>
+                <col width="5%"/>
+                <col width="*"/>
+                <col width="20%"/>
+                <col width="15%"/>
+                <col width="8%"/>
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">글번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">작성일</th>
+                    <th scope="col">조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="board : ${boardList}">
+                    <td th:text="${board.boardIdx}"></td>
+                    <td>
+                        <span th:style="'margin-left:' + (20 * ${board.depth}) + 'px;'"></span> <!-- 계층 들여쓰기 -->
+                        <span th:if="${board.parentIdx != null}" class="reply-arrow">↪</span> <!-- 답글 화살표 -->
+                        <a th:href="@{/board/openBoardDetail.do(boardIdx=${board.boardIdx})}" th:text="${board.title}"></a>
+                    </td>
+                    <td th:text="${board.createrId}"></td>
+                    <td th:text="${board.createdDatetime}"></td>
+                    <td th:text="${board.hitCnt}"></td>
+                </tr>
 
-	</div>
+                <tr th:unless="${#lists.size(boardList)} > 0">
+                    <td colspan="5">조회된 결과가 없습니다.</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <!-- 글쓰기 버튼 -->
+        <!-- <a style="float: right; margin-top: 10px;" class="btn" th:href="@{/board/openBoardWrite.do}">글쓰기</a> -->
+
+        <!-- 페이징 처리 -->
+        <div id="pagination">
+            <a class="btn" th:if="${currentPage > 1}"
+               th:href="@{/board/openBoardList.do(page=${currentPage - 1})}">&laquo; 이전</a>
+
+            <span th:each="pageNum : ${#numbers.sequence(1, totalPages)}">
+                <a class="btn" th:classappend="${currentPage == pageNum} ? 'active'"
+                   th:href="@{/board/openBoardList.do(page=${pageNum})}" th:text="${pageNum}"></a>
+            </span>
+
+            <a class="btn" th:if="${currentPage < totalPages}"
+               th:href="@{/board/openBoardList.do(page=${currentPage + 1})}">다음 &raquo;</a>
+        </div>
+    </div>
 </div>
+
+	<!-- <div id="pagination" style="margin-top: 20px;">
+		<a class="btn" th:if="${currentPage > 1}"
+		   th:href="@{/board/openBoardList.do(page=${currentPage - 1})}">이전</a>
+
+		<span th:each="pageNum : ${#numbers.sequence(1, totalPages)}">
+			<a class="btn" th:classappend="${currentPage == pageNum} ? 'active'"
+			   th:href="@{/board/openBoardList.do(page=${pageNum})}" th:text="${pageNum}"></a>
+		</span>
+		<a class="btn" th:if="${currentPage < totalPages}"
+		   th:href="@{/board/openBoardList.do(page=${currentPage + 1})}">다음</a>
+	</div> -->

@@ -7,83 +7,6 @@
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/fold.css}" />
     <!-- <link rel="stylesheet" th:href="@{/assets/css/style.css}"/> -->
-    <style>
-    /* 페이징 버튼 스타일 */
-    #pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        margin-top: 20px;
-    }
-
-    #pagination .btn {
-        padding: 8px 12px;
-        text-decoration: none;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        color: #333;
-        background-color: #f9f9f9;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    #pagination .btn:hover {
-        background-color: #007bff;
-        color: #fff;
-    }
-
-    #pagination .btn.active {
-        background-color: #007bff;
-        color: #fff;
-        font-weight: bold;
-    }
-
-    /* 답글 화살표 스타일 */
-    .reply-arrow {
-        color: #007bff;
-        font-size: 14px;
-        margin-right: 5px;
-    }
-
-    /* 게시글 스타일 */
-    .board_list {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-    }
-
-    .board_list th, .board_list td {
-        border: 1px solid #ccc;
-        text-align: left;
-        padding: 8px;
-    }
-
-    .board_list th {
-        background-color: #f1f1f1;
-    }
-
-    /* 답글을 특정 게시글 아래로 */
-    .board_list tr th[data-parent="true"] {
-        padding-left: 30px;
-        color: #555;
-    }
-
-    .board_list tr[data-parent] td:first-child {
-        padding-left: 30px; /* 들여쓰기 간격 */
-        color: #555; /* 답글 스타일 */
-    }
-
-    .board_list tr td {
-        vertical-align: top;
-    }
-
-    /* 계층적인 들여쓰기 */
-    .board_list tr td span[style*="margin-left"] {
-        display: inline-block;
-        width: 1px;
-        height: 1px;
-    }
-    </style>
 </head>
 <body class="is-preload">
 
@@ -99,6 +22,7 @@
 									<a th:href="@{/index}" class="logo"><strong>AZABELLCODE</strong> by Azabell1993</a>
 
 								</header>
+
 							<!-- Banner -->
 								<section id="banner">
 									<div class="content">
@@ -107,7 +31,7 @@
 							</div>
 
 						<!-- insert main content -->
-                        <th:block th:replace="thymeleaf/board/board_insert.html :: indexFragment"></th:block>
+                        <th:block th:replace="thymeleaf/board/reply_insert.html :: indexFragment"></th:block>
 
 						<div>
                             <section include-html="/main/foot.html"></section>
@@ -120,6 +44,7 @@
                         <th:block th:replace="thymeleaf/main/menu.html :: mennuFragment"></th:block>
                     </div>
                 </div>
+        </div>
         </div>
         <script src="/assets/js/jquery.min.js"></script>
         <script src="/assets/js/browser.min.js"></script>

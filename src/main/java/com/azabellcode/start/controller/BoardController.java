@@ -4,11 +4,14 @@ import com.azabellcode.start.dto.BoardDto;
 import com.azabellcode.start.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model; // 추가된 부분
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -17,12 +20,22 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @RequestMapping("/board/openBoardList.do")
-    public ModelAndView openBoardList() throws Exception {
-        ModelAndView mv = new ModelAndView("thymeleaf/board/board");
-        List<BoardDto> boardlist = boardService.selectBoardList();
-        mv.addObject("list", boardlist);
-        return mv;
+    @GetMapping("/board/openBoardList.do")
+    public String openBoardList(@RequestParam(defaultValue = "1") int page, Model model) {
+        int pageSize = 10;
+        List<BoardDto> boardList = boardService.getBoardList(page, pageSize);
+        if (boardList == null) {
+            boardList = new ArrayList<>();
+        }
+        int totalCount = boardService.getBoardCount();
+        int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+
+        // 데이터를 모델에 추가
+        model.addAttribute("boardList", boardList);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", totalPages);
+
+        return "thymeleaf/board/board";
     }
 
     @RequestMapping("/board/openBoardWrite.do")
@@ -44,6 +57,7 @@ public class BoardController {
         mv.addObject("board", board);
         return mv;
     }
+
     @RequestMapping("/board/deleteBoard.do")
     public String deleteBoard(@RequestParam("boardIdx") int boardIdx, @RequestParam("password") String password) throws Exception {
         BoardDto board = boardService.selectBoardDetail(boardIdx);
@@ -58,7 +72,7 @@ public class BoardController {
 
     @RequestMapping("/board/openBoardReply.do")
     public ModelAndView openBoardReply(@RequestParam("boardIdx") int boardIdx) throws Exception {
-        ModelAndView mv = new ModelAndView("thymeleaf/board/reply_insert");
+        ModelAndView mv = new ModelAndView("thymeleaf/board/reply");
         BoardDto parentBoard = boardService.selectBoardDetail(boardIdx);
         mv.addObject("parentBoard", parentBoard);
         return mv;

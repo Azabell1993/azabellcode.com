@@ -3,6 +3,33 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.azabellcode.start.mapper.BoardMapper">
+    <select id="findBoardList" parameterType="map" resultType="com.azabellcode.start.dto.BoardDto">
+        SELECT 
+            board_idx,
+            title,
+            contents,
+            creater_id,
+            parent_idx,
+            depth,
+            DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime
+        FROM board
+        WHERE delete_yn = 'N'
+        ORDER BY
+            CASE
+                WHEN parent_idx IS NULL THEN board_idx -- 부모 게시글은 board_idx 기준
+                ELSE parent_idx -- 답글은 부모의 board_idx 기준
+            END DESC, -- 최신 부모 게시글부터 정렬
+            parent_idx IS NOT NULL, -- 답글은 부모 게시글 다음에 정렬
+            depth ASC, -- 깊이 순서로 정렬
+            created_datetime ASC -- 같은 계층에서는 작성 시간 순으로 정렬
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+
+    <select id="countAllBoards" resultType="int">
+        SELECT COUNT(*)
+        FROM board
+    </select>
 
     <!-- 게시글 목록 조회 -->
     <select id="selectBoardList" resultType="com.azabellcode.start.dto.BoardDto">
@@ -20,10 +47,15 @@
             WHERE
                 delete_yn = 'N'
             ORDER BY
-                CASE WHEN parent_idx IS NULL THEN board_idx ELSE parent_idx END ASC,
-                board_idx ASC
+                CASE 
+                    WHEN parent_idx IS NULL THEN board_idx -- 부모 게시글 기준
+                    ELSE parent_idx -- 답글은 부모 게시글 기준
+                END DESC, -- 최신 부모 게시글부터 정렬
+                parent_idx IS NOT NULL, -- 답글은 부모 게시글 다음에 정렬
+                created_datetime ASC -- 답글은 작성 시간순으로 정렬
         ]]>
     </select>
+
 
     <!-- 게시글 작성 -->
     <insert id="insertBoard" parameterType="com.azabellcode.start.dto.BoardDto">
@@ -83,20 +115,22 @@
     <!-- 답글 작성 -->
     <insert id="insertReply" parameterType="com.azabellcode.start.dto.BoardDto">
         <![CDATA[
-            INSERT INTO BOARD (
+            INSERT INTO board (
                 title,
                 contents,
                 creater_id,
                 password,
                 created_datetime,
-                parent_idx
+                parent_idx,
+                depth
             ) VALUES (
                 #{title},
                 #{contents},
                 #{createrId},
                 #{password},
                 NOW(),
-                #{parentIdx}
+                #{parentIdx},
+                (SELECT tmp.depth + 1 FROM (SELECT depth FROM board WHERE board_idx = #{parentIdx}) AS tmp)
             )
         ]]>
     </insert>

@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param; // 이 부분 추가
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface BoardMapper {
@@ -25,4 +26,7 @@ public interface BoardMapper {
 
     // 전체 게시글 수 조회
     int countAllBoards();
+
+    List<BoardDto> findBoardList(Map<String, Object> params);
+
 }

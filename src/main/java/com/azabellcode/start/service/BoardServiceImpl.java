@@ -8,7 +8,9 @@ import com.azabellcode.start.dto.BoardDto;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -47,10 +49,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDto> getBoardList(int page, int pageSize) {
-		int offset = (page - 1) * pageSize;
-		List<BoardDto> boardList = boardMapper.findBoardList(offset, pageSize);
-		return boardList != null ? boardList : new ArrayList<>();
+	public List<BoardDto> getBoardList(int offset, int pageSize) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("offset", offset);
+		params.put("pageSize", pageSize);
+
+		return boardMapper.findBoardList(params);
 	}
 
     @Override

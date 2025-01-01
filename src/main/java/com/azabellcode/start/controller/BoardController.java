@@ -22,21 +22,33 @@ public class BoardController {
 
     @GetMapping("/board/openBoardList.do")
     public String openBoardList(@RequestParam(defaultValue = "1") int page, Model model) {
-        int pageSize = 10;
-        List<BoardDto> boardList = boardService.getBoardList(page, pageSize);
+        int pageSize = 10; // 한 페이지에 보여질 게시글 수
+    
+        // 페이지가 1보다 작을 경우 기본값으로 설정
+        if (page < 1) {
+            page = 1;
+        }
+    
+        int offset = (page - 1) * pageSize; // SQL 쿼리에서 LIMIT의 시작 지점 계산
+    
+        // 게시글 리스트 가져오기
+        List<BoardDto> boardList = boardService.getBoardList(offset, pageSize);
         if (boardList == null) {
             boardList = new ArrayList<>();
         }
+    
+        // 전체 게시글 수
         int totalCount = boardService.getBoardCount();
         int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-
+    
         // 데이터를 모델에 추가
         model.addAttribute("boardList", boardList);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", totalPages);
-
+    
         return "thymeleaf/board/board";
     }
+    
 
     @RequestMapping("/board/openBoardWrite.do")
     public String openBoardWrite() {

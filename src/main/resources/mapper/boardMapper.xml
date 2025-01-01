@@ -3,6 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.azabellcode.start.mapper.BoardMapper">
+    <!-- 게시글 조회 쿼리 -->
     <select id="findBoardList" parameterType="map" resultType="com.azabellcode.start.dto.BoardDto">
         WITH RECURSIVE CTE AS (
             -- 최상위 게시글 가져오기
@@ -14,7 +15,8 @@
                 parent_idx,
                 depth,
                 created_datetime,
-                hit_cnt
+                hit_cnt,
+                board_idx AS root_board_idx -- 그룹화를 위해 최상위 게시글의 ID 유지
             FROM 
                 board
             WHERE 
@@ -28,9 +30,10 @@
                 b.contents,
                 b.creater_id,
                 b.parent_idx,
-                b.depth,
+                c.depth + 1 AS depth, -- 부모의 depth + 1
                 b.created_datetime,
-                b.hit_cnt
+                b.hit_cnt,
+                c.root_board_idx -- 상위 게시글의 root ID 유지
             FROM 
                 board b
             INNER JOIN CTE c
@@ -47,15 +50,18 @@
             depth,
             DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime,
             hit_cnt
-        FROM 
-            CTE
+        FROM CTE
         ORDER BY 
-            COALESCE(parent_idx, board_idx) ASC, -- 부모 기준 최신 순 정렬
-            depth ASC, -- 깊이 순 정렬
-            created_datetime ASC -- 동일 depth 내 시간 순 정렬
-        LIMIT #{offset}, #{pageSize}; -- 페이지네이션 적용
+            -- 최상위 게시글의 작성일 기준 최신순
+            (SELECT created_datetime FROM board WHERE board_idx = root_board_idx) DESC,
+            -- 부모 기준 정렬
+            root_board_idx ASC,
+            -- 깊이 기준 정렬
+            depth ASC,
+            -- 동일 depth 내에서 작성일 기준 정렬
+            created_datetime ASC
+        LIMIT #{offset}, #{pageSize}; -- 페이징 처리
     </select>
-
 
 
     <select id="countAllBoards" resultType="int">

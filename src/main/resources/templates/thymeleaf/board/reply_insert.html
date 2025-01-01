@@ -2,8 +2,7 @@
 <div th:fragment="indexFragment">
 	<div class="container">
 		<h2>답글 등록</h2>
-		<form id="frm" name="frm" method="post" action="/board/insertBoard.do"
-			<table class="board_detail">
+		<form id="frm" name="frm" method="post" action="/board/insertReply.do" table class="board_detail">
 				<!-- Hidden input for parentIdx -->
 				<input type="hidden" id="parentIdx" name="parentIdx" th:value="${parentBoard.boardIdx}"/>
 

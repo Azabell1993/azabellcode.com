@@ -1,2 +1,0 @@
-   58  emcc validate.cpp -o validate -sEXPORTED_RUNTIME_METHODS=ccall,UTF8ToString,cwrap
-   59  mv validate validate.js

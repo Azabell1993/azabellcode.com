@@ -1,38 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.azabellcode.start.mapper.BoardMapper" >	<!-- xml파일을 사용할 mapper가 있는 경로 -->
-	<!-- <select> 태그를 이용하여 select 쿼리임을 나타냄. 앞서 mapper에서 말했던 메소드의 이름은 select 쿼리의 id값과 같아야함. -->
-		<select id="selectBoardList" resultType="com.azabellcode.start.dto.BoardDto">
-			<![CDATA[
-				SELECT 
-					board_idx, title, contents, creater_id, DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime, hit_cnt
-				FROM 
-					BOARD B
-				WHERE 
-					B.delete_yn = 'N'
-				ORDER BY 
-					board_idx DESC
-			]]>
-		</select>
+<mapper namespace="com.azabellcode.start.mapper.BoardMapper">
 
-		<insert id="insertBoard" parameterType="com.azabellcode.start.dto.BoardDto">
-			<![CDATA[
-				INSERT INTO BOARD (
-					title                
-					,contents         
-					,creater_id
-					,password
-					,created_datetime
-				) VALUES (
-					#{title},
-					#{contents},
-					#{createrId},
-					#{password},
-					NOW()
-				)
-			]]>
-		</insert>
+    <!-- 게시글 목록 조회 -->
+    <select id="selectBoardList" resultType="com.azabellcode.start.dto.BoardDto">
+        <![CDATA[
+            SELECT
+                board_idx,
+                title,
+                contents,
+                creater_id,
+                DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime,
+                hit_cnt,
+                parent_idx
+            FROM
+                BOARD
+            WHERE
+                delete_yn = 'N'
+            ORDER BY
+                CASE WHEN parent_idx IS NULL THEN board_idx ELSE parent_idx END ASC,
+                board_idx ASC
+        ]]>
+    </select>
+
+    <!-- 게시글 작성 -->
+    <insert id="insertBoard" parameterType="com.azabellcode.start.dto.BoardDto">
+        <![CDATA[
+            INSERT INTO BOARD (
+                title,
+                contents,
+                creater_id,
+                password,
+                created_datetime
+            ) VALUES (
+                #{title},
+                #{contents},
+                #{createrId},
+                #{password},
+                NOW()
+            )
+        ]]>
+    </insert>
+
+    <!-- 게시글 상세 조회 -->
+    <select id="selectBoardDetail" parameterType="int" resultType="com.azabellcode.start.dto.BoardDto">
+        SELECT
+            board_idx,
+            title,
+            contents,
+            creater_id,
+            password,
+            DATE_FORMAT(created_datetime, '%Y.%m.%d %H:%i:%s') AS created_datetime,
+            hit_cnt,
+            parent_idx
+        FROM
+            BOARD
+        WHERE
+            board_idx = #{boardIdx}
+            AND delete_yn = 'N'
+    </select>
+
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteBoard" parameterType="int">
+        <![CDATA[
+            DELETE FROM BOARD
+            WHERE board_idx = #{boardIdx}
+        ]]>
+    </delete>
+
+    <!-- 조회수 증가 -->
+    <update id="increaseHitCnt" parameterType="int">
+        <![CDATA[
+            UPDATE BOARD
+            SET hit_cnt = hit_cnt + 1
+            WHERE board_idx = #{boardIdx}
+        ]]>
+    </update>
+
+    <!-- 답글 작성 -->
+    <insert id="insertReply" parameterType="com.azabellcode.start.dto.BoardDto">
+        <![CDATA[
+            INSERT INTO BOARD (
+                title,
+                contents,
+                creater_id,
+                password,
+                created_datetime,
+                parent_idx
+            ) VALUES (
+                #{title},
+                #{contents},
+                #{createrId},
+                #{password},
+                NOW(),
+                #{parentIdx}
+            )
+        ]]>
+    </insert>
 
 </mapper>

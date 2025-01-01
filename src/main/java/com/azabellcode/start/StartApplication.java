@@ -12,7 +12,7 @@ public class StartApplication extends SpringBootServletInitializer{
 	public static void main(String[] args) {
 		SpringApplication.run(StartApplication.class, args);
 	}
-	
+
 	/*
 	 * @Mapping SpringBoot WebServer care24
 	 * @2022.11.22

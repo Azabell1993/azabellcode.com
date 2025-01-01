@@ -11,7 +11,8 @@ public interface BoardMapper {
 	public List<BoardDto> selectBoardList() throws Exception; 
 
     void insertBoard(BoardDto board) throws Exception;		//게시판 쓰기
-    
-
-
+    void deleteBoard(int boardIdx) throws Exception;        // 게시판 삭제
+     void insertReply(BoardDto board) throws Exception;  // 댓글 쓰기
+    BoardDto selectBoardDetail(int boardIdx) throws Exception;    //게시판 상세보기
+    void increaseHitCnt(int boardIdx) throws Exception;    //조회수 증가
 }

@@ -1,7 +1,6 @@
 package com.azabellcode.start.dto;
 
 import lombok.Data;
-
 @Data
 public class BoardDto {
     /*
@@ -23,35 +22,39 @@ public class BoardDto {
             PRIMARY KEY(board_idx)
         ) DEFAULT CHARSET=utf8mb4 COMMENT '게시판'
      */
-    private int boardIdx;
-    private String title;
-    private String contents;
-    private String createrId;
-    private String password;
-    private int  hitCnt;
-    private String noticeYn;
-    private String secretYn;
-    private String updatedDatetime;
-    private String deleteYn;
-    private byte[] boardFile;
-    private String createdDatetime;
-    private String updateTime;
-    private String deleteTime;
+    private int boardIdx; // 게시글 번호(PK)
+    private String title; // 제목
+    private String contents; // 내용
+    private String createrId; // 작성자
+    private String password; // 패스워드
+    private int hitCnt; // 조회수
+    private String noticeYn; // 공지 여부
+    private String secretYn; // 비밀글 여부
+    private String updatedDatetime; // 수정시간
+    private String deleteYn; // 삭제 여부
+    private byte[] boardFile; // 첨부파일
+    private String createdDatetime; // 등록일
+    private String updateTime; // 수정일
+    private String deleteTime; // 삭제일
+    private Integer parentIdx; // 부모 게시글 번호 (답글일 경우)
 
     @Override
     public String toString() {
-                return "TestDto [board_idx=" + boardIdx + 
-                ", title=" + title + 
-                ", contents=" + contents + 
-                ", createrId=" + createrId + 
-                ", password=" + password + 
-                ", hitCnt=" + hitCnt + 
-                ", secretYn=" + secretYn + 
-                ", updatedDatetime=" + updatedDatetime + 
-                ", deleteYn=" + deleteYn + 
-                ", boardFile=" + boardFile +
-                ", createdDatetime=" + createdDatetime + 
-                ", updateTime=" + updateTime + 
-                ", deleteTime=" + deleteTime + "]\n";
+        return "BoardDto{" +
+                "boardIdx=" + boardIdx +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
+                ", createrId='" + createrId + '\'' +
+                ", password='" + password + '\'' +
+                ", hitCnt=" + hitCnt +
+                ", noticeYn='" + noticeYn + '\'' +
+                ", secretYn='" + secretYn + '\'' +
+                ", updatedDatetime='" + updatedDatetime + '\'' +
+                ", deleteYn='" + deleteYn + '\'' +
+                ", createdDatetime='" + createdDatetime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
+                ", deleteTime='" + deleteTime + '\'' +
+                ", parentIdx=" + parentIdx +
+                '}';
     }
 }

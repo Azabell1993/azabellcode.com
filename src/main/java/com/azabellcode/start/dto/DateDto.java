@@ -13,7 +13,7 @@ import lombok.Setter;
 @Builder
 public class DateDto {
     private int date;
-   
+
     @Override
     public String toString() {
         return "TestDto [date=" + date + "]";

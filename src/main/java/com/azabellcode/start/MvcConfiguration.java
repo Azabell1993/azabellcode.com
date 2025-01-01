@@ -27,13 +27,9 @@ public class MvcConfiguration implements WebMvcConfigurer{
 											,"classpath:/templates/thymeleaf/assets/sass"
 											,"classpath:/templates/thymeleaf/assets/wasm"
 											,"classpath:/templates/thymeleaf/main"
-											,"classpath:/templates/thymeleaf/product"
-											,"classpath:/templates/thymeleaf/board"
-											,"classpath:/templates/thymeleaf/eduOOP"
 											,"classpath:/templates/thymeleaf/example"
 											,"classpath:/templates/thymeleaf/example/**/"
 											)
-											
 		 .setCacheControl(CacheControl.maxAge(50, TimeUnit.MINUTES));
 		}
 
@@ -41,5 +37,4 @@ public class MvcConfiguration implements WebMvcConfigurer{
 		public void configureViewResolvers(ViewResolverRegistry registry) {
 			registry.jsp("/WEB-INF/views/", ".jsp");
 		}
-	
 }

@@ -14,7 +14,7 @@ import lombok.Setter;
 public class MapDto {
    private String name;
    private Long age;
-  
+
    @Override
    public String toString() {
        return "TestDto [name=" + name + ", age=" + age + "]";

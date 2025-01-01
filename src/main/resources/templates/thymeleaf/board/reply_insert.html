@@ -1,32 +1,29 @@
-<!--footerFragment 선언-->
 <div th:fragment="indexFragment">
 	<div class="container">
-		<h2>게시판 등록</h2>
-		<form id="frm" name="frm" method="post" action="/board/insertBoard.do"
+		<h2>답글 작성</h2>
+		<form id="frm" name="frm" method="post" action="/board/insertReply.do">
 			<table class="board_detail">
+				<!-- Hidden input for parentIdx -->
+				<input type="hidden" id="parentIdx" name="parentIdx" th:value="${parentBoard.boardIdx}"/>
+
 				<tr>
 					<td>제목</td>
 					<td><input type="text" id="title" name="title"></td>
-				</tr><br/>
+				</tr>
                 <tr>
 					<td colspan="2">작성자</td>
                     <td><input type="text" id="createrId" name="createrId"></td>
-					</td>
-				</tr><br/>
+				</tr>
                 <tr>
 					<td colspan="2">패스워드</td>
-                    <td><input type="text" id="password" name="password"></td>
-					</td>
-				</tr><br/>
+                    <td><input type="password" id="password" name="password"></td>
+				</tr>
 				<tr>
 					<td colspan="2">내용</td>
-						<textarea id="contents" name="contents"></textarea>
-					</td>
-				</tr><br/>
-
+					<td><textarea id="contents" name="contents"></textarea></td>
+				</tr>
 			</table>
 			<input type="submit" id="submit" value="저장" class="btn">
 		</form>
 	</div>
-    </div>
-    <hr class="major"/>
+</div>

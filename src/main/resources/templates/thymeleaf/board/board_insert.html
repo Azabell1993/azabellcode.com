@@ -19,20 +19,25 @@
 					<th scope="col">조회수</th>
 				</tr>
 			</thead>
-			<tbody> 
-				<tr th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
-					<td th:text="${list.boardIdx}"></td>
-					<td th:text="${list.title}"></td>
-					<td th:text="${list.createrId}"></td>
-					<td th:text="${list.createdDatetime}"></td>
-					<td th:text="${list.hitCnt}"></td>
+			<tbody>
+				<tr th:each="board : ${list}">
+					<td th:text="${board.boardIdx}"></td>
+					<td>
+						<span th:if="${board.parentIdx != null}" class="reply-arrow">↳</span>
+						<a th:href="@{/board/openBoardDetail.do(boardIdx=${board.boardIdx})}" th:text="${board.title}"></a>
+					</td>
+					<td th:text="${board.createrId}"></td>
+					<td th:text="${board.createdDatetime}"></td>
+					<td th:text="${board.hitCnt}"></td>
 				</tr>
+
 				<tr th:unless="${#lists.size(list)} > 0">
-					<td colspan="4">조회된 결과가 없습니다.</td>
+					<td colspan="5">조회된 결과가 없습니다.</td>
 				</tr>
 			</tbody>
+
 		</table>
-		
+
 		<a style="float: right" class="btn" th:href="@{/board/openBoardWrite.do}">글쓰기</a>
 
 	</div>

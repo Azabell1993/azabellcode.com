@@ -49,8 +49,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="board : ${boardList}">
-                    <td th:text="${board.boardIdx}"></td>
+                <tr th:each="board, status : ${boardList}">
+                    <!-- 화면 상의 글번호를 내림차순으로 계산 -->
+                    <td th:text="${#lists.size(boardList) - status.index}"></td>
                     <td>
                         <span th:style="'margin-left:' + (20 * ${board.depth}) + 'px;'"></span> <!-- 계층 들여쓰기 -->
                         <span th:if="${board.parentIdx != null}" class="reply-arrow">↪</span> <!-- 답글 화살표 -->

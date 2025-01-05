@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.bashrc
+
 # wasm 디렉토리 생성
 # mkdir -p /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/
 

@@ -13,7 +13,7 @@ public class MvcConfiguration implements WebMvcConfigurer{
 	/*
 	 * @HTML Request Mapping
 	 * @classpath:/templates/, classpath:/static/
-	 * @Azabell1993
+	 * ㄱ@Azabell1993
 	 */
 	 @Override
 	 public void addResourceHandlers(final ResourceHandlerRegistry registry) {

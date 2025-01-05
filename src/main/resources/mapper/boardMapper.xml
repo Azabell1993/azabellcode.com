@@ -81,7 +81,7 @@
                 hit_cnt,
                 parent_idx
             FROM
-                BOARD
+                board
             WHERE
                 delete_yn = 'N'
             ORDER BY
@@ -98,7 +98,7 @@
     <!-- 게시글 작성 -->
     <insert id="insertBoard" parameterType="com.azabellcode.start.dto.BoardDto">
         <![CDATA[
-            INSERT INTO BOARD (
+            INSERT INTO board (
                 title,
                 contents,
                 creater_id,
@@ -136,7 +136,7 @@
     <!-- 게시글 삭제 -->
     <delete id="deleteBoard" parameterType="int">
         <![CDATA[
-            DELETE FROM BOARD
+            DELETE FROM board
             WHERE board_idx = #{boardIdx}
         ]]>
     </delete>
@@ -144,7 +144,7 @@
     <!-- 조회수 증가 -->
     <update id="increaseHitCnt" parameterType="int">
         <![CDATA[
-            UPDATE BOARD
+            UPDATE board
             SET hit_cnt = hit_cnt + 1
             WHERE board_idx = #{boardIdx}
         ]]>

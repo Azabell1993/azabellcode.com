@@ -27,6 +27,10 @@ public class MvcConfiguration implements WebMvcConfigurer{
 											,"classpath:/templates/thymeleaf/assets/sass"
 											,"classpath:/templates/thymeleaf/assets/wasm"
 											,"classpath:/templates/thymeleaf/main"
+											,"classpath:/templates/thymeleaf/minishell"
+											,"classpath:/templates/thymeleaf/calculator"
+											,"classpath:/templates/thymeleaf/wasm"
+											,"classpath:/templates/thymeleaf/wasm/**/"
 											,"classpath:/templates/thymeleaf/example"
 											,"classpath:/templates/thymeleaf/example/**/"
 											)

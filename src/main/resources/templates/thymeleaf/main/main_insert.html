@@ -1,36 +1,150 @@
 <div th:fragment="indexFragment">
-    <section id="banner" style="background-color: #f3f4f6; padding: 40px; text-align: center; font-family: 'Roboto', sans-serif;">
-      <div class="content" style="max-width: 800px; margin: auto;">
-        <header>
-          <h1 style="font-size: 2.5em; color: #2c3e50;">Welcome to My Blog</h1>
-          <p style="font-size: 1.2em; color: #7f8c8d;">Exploring the Core of Embedded Systems</p>
-          <h3 style="font-size: 1.5em; color: #34495e; margin-bottom: 30px;">Linux BSP Development | Real-time Systems | WebAssembly</h3>
-        </header>
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-top: 40px;">
-          <!-- 덧셈 가산기 영역 -->
-          <div style="flex: 1; min-width: 300px; max-width: 400px; text-align: left; background-color: #ffffff; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-            <h4 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 20px;">Simple Calculator</h4>
-            <!-- Input A -->
-            <div style="position: relative; margin-bottom: 20px;">
-              <label for="numA" style="font-size: 0.9em; color: #34495e; position: absolute; top: -8px; left: 15px; background: #ffffff; padding: 0 5px; transition: 0.3s;">Input A</label>
-              <input type="number" id="numA" style="padding: 15px; width: 100%; border-radius: 5px; border: 1px solid #bdc3c7; outline: none; transition: 0.3s; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);">
-            </div>
-            <!-- Input B -->
-            <div style="position: relative; margin-bottom: 20px;">
-              <label for="numB" style="font-size: 0.9em; color: #34495e; position: absolute; top: -8px; left: 15px; background: #ffffff; padding: 0 5px; transition: 0.3s;">Input B</label>
-              <input type="number" id="numB" style="padding: 15px; width: 100%; border-radius: 5px; border: 1px solid #bdc3c7; outline: none; transition: 0.3s; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);">
-            </div>
-            <!-- ADD 버튼 -->
-            <button class="mybutton" style="width: 100%; color: #fff; border: none; border-radius: 50px; cursor: pointer; font-size: 1em; transition: transform 0.2s, box-shadow 0.2s;">
-              ADD
-            </button>
-            <p id="textcontent" style="font-size: 1em; color: #7f8c8d; margin-top: 15px;">Click 'ADD' to see the result here.</p>
+  <section id="banner"
+    style="background-color: #f3f4f6; padding: 40px; text-align: center; font-family: 'Roboto', sans-serif;">
+    <div class="content" style="max-width: 800px; margin: auto;">
+      <style>
+        /* Mini Shell Styling */
+        #terminal {
+          background-color: #1e1e1e;
+          color: #d4d4d4;
+          font-family: 'Courier New', Courier, monospace;
+          width: 95%;
+          height: 50vh;
+          border-radius: 8px;
+          padding: 10px;
+          border: 1px solid #444;
+          overflow-y: auto;
+          margin: 20px auto;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+          scrollbar-width: thin;
+          scrollbar-color: #00ff00 #333;
+          animation: fade-in 0.8s ease-in-out;
+        }
+
+        #terminal::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        #terminal::-webkit-scrollbar-track {
+          background: #333;
+        }
+
+        #terminal::-webkit-scrollbar-thumb {
+          background: #00ff00;
+          border-radius: 10px;
+        }
+
+        #terminal #output {
+          white-space: pre-wrap;
+          animation: slide-down 0.5s ease-in-out;
+          text-align: left;
+        }
+
+        #input-line {
+          display: flex;
+          align-items: center;
+          margin-top: 10px;
+          position: sticky;
+          bottom: 0;
+          padding: 5px;
+          border-top: 1px solid #444;
+        }
+
+        #prompt {
+          color: #00ff00;
+          margin-right: 5px;
+        }
+
+        #command {
+          flex: 1;
+          padding: 8px;
+          font-size: 14px;
+          border: 1px solid #666;
+          border-radius: 4px;
+          color: #d4d4d4;
+          background-color: #333;
+        }
+
+        #command:focus {
+          outline: none;
+          border-color: #00ff00;
+        }
+      </style>
+      <header>
+        <h1 style="font-size: 2.5em; color: #2c3e50;">Welcome to My Blog</h1>
+        <p style="font-size: 1.2em; color: #7f8c8d;">Exploring the Core of Embedded Systems</p>
+        <h3 style="font-size: 1.5em; color: #34495e; margin-bottom: 30px;">Linux BSP Development | Real-time Systems |
+          WebAssembly</h3>
+      </header>
+
+      <div
+        style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-top: 40px;">
+        <!-- 덧셈 가산기 영역 -->
+        <div
+          style="flex: 1; min-width: 300px; max-width: 400px; text-align: left; background-color: #ffffff; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <h4 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 20px;">WASM Calculator</h4>
+          <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 20px;">
+            This addition calculator demonstrates a subset of C-based functionality compiled to WebAssembly, showcasing
+            its
+            addition capabilities.
+          </p>
+          <!-- Input A -->
+          <div style="position: relative; margin-bottom: 20px;">
+            <label for="num1"
+              style="font-size: 0.9em; color: #34495e; position: absolute; top: -8px; left: 15px; background: #ffffff; padding: 0 5px; transition: 0.3s;">Enter
+              First Number</label>
+            <input type="number" id="num1"
+              style="padding: 15px; width: 100%; border-radius: 5px; border: 1px solid #bdc3c7; outline: none; transition: 0.3s; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);">
           </div>
-          <!-- 이미지 영역 -->
-          <div style="flex: 1; min-width: 300px; max-width: 400px;">
-            <img src="images/mainPic.png" style="width: 100%; height:auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" alt="Main Visual">
+          <!-- Input B -->
+          <div style="position: relative; margin-bottom: 20px;">
+            <label for="num2"
+              style="font-size: 0.9em; color: #34495e; position: absolute; top: -8px; left: 15px; background: #ffffff; padding: 0 5px; transition: 0.3s;">Enter
+              Second Number</label>
+            <input type="number" id="num2"
+              style="padding: 15px; width: 100%; border-radius: 5px; border: 1px solid #bdc3c7; outline: none; transition: 0.3s; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);">
+          </div>
+          <!-- ADD 버튼 -->
+          <button type="submit" onclick="calculateSum();" id="submitBtn" disabled
+            style="width: 100%; color: #fff; border: none; border-radius: 50px; cursor: pointer; font-size: 1em; transition: transform 0.2s, box-shadow 0.2s;">
+            ADD
+          </button>
+          <p id="result" style="font-size: 1em; color: #7f8c8d; margin-top: 15px;">Click 'ADD' to see the result here.
+          </p>
+        </div>
+        <!-- 이미지 영역 -->
+        <div style="flex: 1; min-width: 300px; max-width: 400px;">
+          <img src="images/mainPic.png"
+            style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+            alt="Main Visual">
+        </div>
+      </div>
+
+      <hr class="major" />
+
+      <div
+        style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-top: 40px;">
+        <div
+          style="flex: 1; text-align: left; background-color: #ffffff; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <h4 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 20px;">Mini Shell</h4>
+          <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 20px;">
+            This Mini Shell is a WebAssembly-compiled simulation of a C-based mini shell that allows
+            simple folder browsing and command simulations within a confined space.
+          </p>
+        </div>
+
+        <!-- <h1>Mini Shell</h1>
+        <p class="description">This Mini Shell is a WebAssembly-compiled simulation of a C-based mini shell that allows
+          simple folder browsing and command simulations within a confined space.</p> -->
+        <div id="terminal">
+          <div id="output"></div>
+          <div id="input-line">
+            <span id="prompt">PS ></span>
+            <input type="text" id="command" autocomplete="off" autofocus placeholder="Enter command">
           </div>
         </div>
       </div>
-    </section>
-  </div>
+
+    </div>
+  </section>
+</div>

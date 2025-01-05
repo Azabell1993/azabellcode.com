@@ -126,7 +126,7 @@
             hit_cnt,
             parent_idx
         FROM
-            BOARD
+            board
         WHERE
             board_idx = #{boardIdx}
             AND delete_yn = 'N'

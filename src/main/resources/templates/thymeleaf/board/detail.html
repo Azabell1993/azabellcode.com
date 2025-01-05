@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+
 <head>
     <title th:text="${site_title}">게시글 상세보기</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
     <link rel="stylesheet" th:href="@{/assets/css/fold.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
     <style>
         /* 긴 내용 개행을 위한 스타일 */
         .board_detail td {
-            white-space: pre-wrap; /* 개행된 텍스트를 유지 */
-            word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+            white-space: pre-wrap;
+            /* 개행된 텍스트를 유지 */
+            word-wrap: break-word;
+            /* 긴 단어를 줄바꿈 */
         }
     </style>
 </head>
+
 <body class="is-preload">
 
     <!-- Wrapper -->
@@ -33,9 +37,9 @@
                     <!-- 데이터 유효성 검사 -->
                     <div th:if="${board != null}">
                         <table class="board_detail">
-                            <tr>
+                            <tr style="display: none;">
                                 <th>글번호</th>
-                                <td th:text="${board.boardIdx}"></td>
+                                <td th:text="${board.boardIdx}" id="hidden-board-id"></td>
                             </tr>
                             <tr>
                                 <th>제목</th>
@@ -103,21 +107,22 @@
                 fetch(`/board/deleteBoard.do?boardIdx=${boardIdx}&password=${encodeURIComponent(password)}`, {
                     method: 'GET',
                 })
-                .then(response => {
-                    if (response.ok) {
-                        alert("삭제되었습니다.");
-                        window.location.href = "/board/openBoardList.do"; // 목록으로 리다이렉트
-                    } else {
-                        alert("삭제에 실패했습니다. 비밀번호를 확인하세요.");
-                    }
-                })
-                .catch(error => {
-                    alert("삭제 중 오류가 발생했습니다.");
-                    console.error(error);
-                });
+                    .then(response => {
+                        if (response.ok) {
+                            alert("삭제되었습니다.");
+                            window.location.href = "/board/openBoardList.do"; // 목록으로 리다이렉트
+                        } else {
+                            alert("삭제에 실패했습니다. 비밀번호를 확인하세요.");
+                        }
+                    })
+                    .catch(error => {
+                        alert("삭제 중 오류가 발생했습니다.");
+                        console.error(error);
+                    });
             }
         }
     </script>
 
 </body>
+
 </html>

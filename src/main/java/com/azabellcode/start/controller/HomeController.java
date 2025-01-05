@@ -17,8 +17,6 @@ import com.azabellcode.start.mapper.MapMapper;
 public class HomeController {
 	@Value("${project.name}")
 	String projectName;
-	String subject = "박지우 202234-153230";
-	String subject2 = "모바일 청첩장";
 	private final MapMapper mapMapper;
 
 	/*

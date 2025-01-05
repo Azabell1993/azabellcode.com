@@ -1,0 +1,19 @@
+[Unit]
+# 서비스 단위 설명 및 시작 순서를 정의
+Description=Minishell Service Daemon    # 서비스의 설명. "Minishell 서비스 데몬"을 나타냄
+After=network.target                    # 이 서비스는 네트워크가 활성화된 후에 시작됨
+
+[Service]
+# 서비스 실행과 관련된 설정
+WorkingDirectory=/var/www/html/minishell_space  # 서비스의 작업 디렉토리 경로
+ExecStart=/home/azabell/Desktop/emsdk/node/20.18.0_64bit/bin/node /var/www/html/daemon/minishell_node.js
+# 서비스가 시작될 때 실행할 명령. Node.js로 minishell_node.js를 실행
+User=azabell                                     # 서비스를 실행할 사용자 계정 (azabell)
+Environment=NODE_PATH=/home/azabell/Desktop/emsdk/node/20.18.0_64bit/lib/node_modules
+# Node.js의 모듈 경로 환경 변수 설정
+Environment=PATH=/home/azabell/Desktop/emsdk:/home/azabell/Desktop/emsdk/node/20.18.0_64bit/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# PATH 환경 변수 설정. Node.js 실행 파일과 EMSDK 경로가 포함됨
+
+[Install]
+# 서비스 설치 및 실행 대상
+WantedBy=multi-user.target  # 다중 사용자 모드에서 이 서비스가 활성화되도록 설정

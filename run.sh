@@ -12,6 +12,7 @@ make
 
 # minishell 결과물을 wasm 폴더로 이동
 # mv ./minishell /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/minishell
+cp ./run_command.js /var/www/html/daemon/run_command.js
 mv ./run_command.js /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/run_command.js
 mv ./run_command.wasm /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/run_command.wasm
 

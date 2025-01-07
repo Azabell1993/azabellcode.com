@@ -1,4 +1,4 @@
-const SERVER_URL = "http://10.211.55.11:5000/execute";
+const SERVER_URL = "http://192.168.122.1:5000/execute";
 const outputElement = document.getElementById('output');
 const commandInput = document.getElementById('command');
 

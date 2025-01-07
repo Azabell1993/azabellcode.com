@@ -5,8 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { exec } = require("child_process");
-const Module = require("/var/www/html/minishell/run_command.js");
-
+const Module = require("/var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/run_command.js");
 const app = express();
 
 // CORS 옵션 설정
@@ -50,7 +49,7 @@ app.post("/execute", (req, res) => {
 
 // HTTP 서버 실행 (개발용)
 http.createServer(app).listen(5000, () => {
-    console.log("HTTP Server running on http://10.211.55.11:5000");
+    console.log("HTTP Server running on http://192.168.122.1:5000");
 });
 
 // // HTTPS 서버 실행 (운영용)

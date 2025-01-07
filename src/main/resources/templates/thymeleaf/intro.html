@@ -1,74 +1,102 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${site_title}">Template Title</title>
+    <title th:text="${site_title}">Azabell Blog</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/fold.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ddd;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 15px 0 5px;
+        }
+
+        .profile-tagline {
+            font-size: 1.1em;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        .profile-stats div {
+            text-align: center;
+        }
+
+        .profile-stats div span {
+            display: block;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .footer {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
 </head>
-<body class="is-preload" style="background-color:#bbfc969f">
+<body>
 
-    <!-- Wrapper -->
-        <div id="wrapper">
+    <div class="profile-container">
+        <!-- Profile Image -->
+        <a th:href="@{/index}">
+            <div class="profile-image">
+                <img src="images/mainLogo.png" alt="Profile Image" />
+            </div>
+        </a>
 
-            <!-- Main -->
-                <div id="main" >
-                    <div class="inner">
-                        <div>
-							<!-- Header -->
-                                <!-- Banner -->
-                                <section id="banner">
-                                        <div class="cursor" > 
-                                                <span class="image main">
-                                                    <a th:href="@{/index}">
-                                                        <div class="move-image">
-                                                        <img src="images/mainLogo.png" style="width: 70%; height:auto; text-align : center;" alt="" />
-                                                            <h1> AZABELLCODE</h1>
-                                                            <h2>since 2023</h2>
-                                                            <footer id="footer">
-                                                                <p class="copyright">&copy; Azabell1993 </p>
-                                                            </footer>
-                                                        </div>
-                                                    </a></span>
-                                         </div>
-								</section>
-						</div>
-						<!-- insert main content -->
-						<div>
-                            <hr/><br/>
-                            <section include-html="/main/foot.html"></section>
-                        </div>
-                    </div>
-                </div>
+        <!-- Name and Tagline -->
+        <div class="profile-name">AZABELLCODE</div>
+        <div class="profile-tagline">Creative Developer | Since 2023</div>
 
-        </div>
-        <script src="assets/js/jquery.min.js"></script>
+
+        <!-- Footer -->
+        <footer class="footer">
+            &copy; 2023 Azabell1993. All Rights Reserved.
+        </footer>
+    </div>
+
 </body>
-    <script>
-        let x = 0,
-        y = 0,
-        mouseX = 0,
-        mouseY = 0,
-        angleX = 0,
-        angleY = 0,
-        fmouseX = 0,
-        fmouseY = 0;
-        document.addEventListener("mousemove", function(e){
-            x = e.pageX;
-            y = e.pageY;
-
-            mouseX = Math.max(-20, Math.min(50, window.innerWidth/2 - x));
-            mouseY = Math.max(-20, Math.min(50, window.innerHeight/2 - y));
-
-            angleX = (12 * mouseX) / 80;
-            angleY = (12 * mouseY) / 80;
-
-            fmouseX += (angleX - fmouseX) * 0.4;
-            fmouseY += (angleY - fmouseY) * 0.1;
-
-            const move = document.querySelector(".move-image");
-            move.style.transform = "translate(-0.5%, -0.8%) perspective(500px) rotateX("+fmouseY+"deg) rotateY("+ -fmouseX+"deg)";
-        });
-    </script>
 </html>

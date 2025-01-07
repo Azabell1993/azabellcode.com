@@ -5,8 +5,8 @@ After=network.target                    # 이 서비스는 네트워크가 활�
 
 [Service]
 # 서비스 실행과 관련된 설정
-WorkingDirectory=/var/www/html/minishell_space  # 서비스의 작업 디렉토리 경로
-ExecStart=/home/azabell/Desktop/emsdk/node/20.18.0_64bit/bin/node /var/www/html/daemon/minishell_node.js
+WorkingDirectory=/var/www/azabellcode.com/minishell_space  # 서비스의 작업 디렉토리 경로
+ExecStart=/home/azabell/Desktop/emsdk/node/20.18.0_64bit/bin/node /var/www/azabellcode.com/daemon/minishell_node.js
 # 서비스가 시작될 때 실행할 명령. Node.js로 minishell_node.js를 실행
 User=azabell                                     # 서비스를 실행할 사용자 계정 (azabell)
 Environment=NODE_PATH=/home/azabell/Desktop/emsdk/node/20.18.0_64bit/lib/node_modules

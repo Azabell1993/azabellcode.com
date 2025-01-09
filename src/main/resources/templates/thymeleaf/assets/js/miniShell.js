@@ -1,6 +1,24 @@
-const SERVER_URL = "http://192.168.122.1:5000/execute";
+const SERVER_URL = "http://192.168.0.14:5000/execute"; // 기본 서버 URL
 const outputElement = document.getElementById('output');
 const commandInput = document.getElementById('command');
+
+// HTTPS 여부를 확인하고 경고 표시
+document.addEventListener("DOMContentLoaded", () => {
+    const warning = document.getElementById("https-warning");
+
+    if (location.protocol !== "https:") {
+        // HTTPS가 아닌 경우 경고 표시
+        if (warning) {
+            warning.style.display = "block";
+        }
+        console.error("This site requires HTTPS to use Mini Shell commands.");
+    } else {
+        // HTTPS인 경우 경고 숨기기
+        if (warning) {
+            warning.style.display = "none";
+        }
+    }
+});
 
 commandInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {

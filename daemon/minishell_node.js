@@ -49,16 +49,15 @@ app.post("/execute", (req, res) => {
 
 // HTTP 서버 실행 (개발용)
 http.createServer(app).listen(5000, () => {
-    console.log("HTTP Server running on http://192.168.122.1:5000");
+    console.log("HTTP Server running on http://192.168.0.14:5000");
 });
 
-// // HTTPS 서버 실행 (운영용)
-// const httpsOptions = {
-//     key: fs.readFileSync("./AppTest.key"),
-//     cert: fs.readFileSync("./AppTest.crt"),
-// };
+// HTTPS 서버 실행 (운영용)
+const httpsOptions = {
+    key: fs.readFileSync("./AppTest.key"),
+    cert: fs.readFileSync("./AppTest.crt"),
+};
 
-// https.createServer(httpsOptions, app).listen(5443, () => {
-//     console.log("HTTPS Server running on https://localhost:5443");
-// });
-
+https.createServer(httpsOptions, app).listen(5443, () => {
+    console.log("HTTPS Server running on https://192.168.0.14:5443");
+});

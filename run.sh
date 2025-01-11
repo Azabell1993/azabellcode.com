@@ -34,5 +34,6 @@ mv ./Calculator.wasm /var/www/azabellcode.com/src/main/resources/templates/thyme
 cd /var/www/azabellcode.com/
 chmod +x ./gradlew
 
+export JAVA_OPTS="-Djava.net.preferIPv4Stack=true"
 ./gradlew build
 ./gradlew bootRun

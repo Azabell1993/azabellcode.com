@@ -1,4 +1,4 @@
-const SERVER_URL = "http://192.168.0.14:5000/execute"; // 기본 서버 URL
+const SERVER_URL = "http://127.0.0.1:5000/execute"; // 기본 서버 URL
 const outputElement = document.getElementById('output');
 const commandInput = document.getElementById('command');
 

@@ -83,4 +83,10 @@ public class HomeController {
 		model.addAttribute("list", mapMapper.listMap());
 		return "thymeleaf/product/sqltest";
 	}
+
+	@RequestMapping(value="/wasm", method=RequestMethod.GET)
+	public String wasm(Model model) {
+		model.addAttribute("site_title", projectName);
+		return "thymeleaf/wasm/Calculator";
+	}
 }

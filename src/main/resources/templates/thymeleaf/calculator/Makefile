@@ -2,7 +2,7 @@
 WASM_WORKSPACE = .
 WASM_SRC = $(WASM_WORKSPACE)/calculator.c
 WASM_OUT = $(WASM_WORKSPACE)/Calculator
-SHELL_TEMPLATE = /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/html_template/shell_minishell.html
+SHELL_TEMPLATE = /home/azabell/Desktop/workspace/azabellcode.com/src/main/resources/templates/thymeleaf/html_template/shell_minishell.html
 
 # EMCC 설정
 EMCC = emcc

@@ -2,38 +2,51 @@
 
 source ~/.bashrc
 
+# 현재 프로젝트 디렉토리 설정 (스크립트가 실행되는 현재 위치)
+PROJECT_DIR="$PWD"
+
 # wasm 디렉토리 생성
-# mkdir -p /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/
+mkdir -p "${PROJECT_DIR}/src/main/resources/templates/thymeleaf/wasm/"
 
-# minishell 디렉토리로 이동
-cd /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/minishell/
+# calculator 디렉토리 확인 및 이동
+CALCULATOR_DIR="${PROJECT_DIR}/src/main/resources/templates/thymeleaf/calculator"
+if [ -d "$CALCULATOR_DIR" ]; then
+    echo "Processing calculator..."
+    cd "$CALCULATOR_DIR"
 
-# Makefile clean 및 make 실행
-make clean
-make
+    
+    # Makefile이 있는지 확인
+    if [ -f "Makefile" ]; then
+        make clean
+        make
+        
+        # 결과물이 있는지 확인하고 이동
+        if [ -f "./Calculator.js" ]; then
+            mv ./Calculator.js "${PROJECT_DIR}/src/main/resources/templates/thymeleaf/wasm/"
+        fi
+        if [ -f "./Calculator.html" ]; then
+            mv ./Calculator.html "${PROJECT_DIR}/src/main/resources/templates/thymeleaf/wasm/"
+        fi
+        if [ -f "./Calculator.wasm" ]; then
+            mv ./Calculator.wasm "${PROJECT_DIR}/src/main/resources/templates/thymeleaf/wasm/"
+        fi
+    else
+        echo "No Makefile found in calculator directory"
+    fi
+else
+    echo "Calculator directory not found: $CALCULATOR_DIR"
+fi
 
-# minishell 결과물을 wasm 폴더로 이동
-# mv ./minishell /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/minishell
-cp ./run_command.js /var/www/html/daemon/run_command.js
-mv ./run_command.js /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/run_command.js
-mv ./run_command.wasm /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/run_command.wasm
-
-# calculator 디렉토리로 이동
-cd /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/calculator/
-
-# Makefile clean 및 make 실행
-make clean
-make
-
-# calculator 결과물을 wasm 폴더로 이동
-mv ./Calculator.js /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/Calculator.js
-mv ./Calculator.html /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/Calculator.html
-mv ./Calculator.wasm /var/www/azabellcode.com/src/main/resources/templates/thymeleaf/wasm/Calculator.wasm
-
-# Gradle 빌드 및 실행
-cd /var/www/azabellcode.com/
+# 현재 프로젝트 디렉토리로 이동하여 Gradle 빌드 및 실행
+cd "$PROJECT_DIR"
 chmod +x ./gradlew
 
+echo "Building and running the application..."
 export JAVA_OPTS="-Djava.net.preferIPv4Stack=true"
-./gradlew build
-./gradlew bootRun
+./gradlew clean bootWar -x test
+echo "Application built successfully!"
+
+# 애플리케이션 실행 (백그라운드)
+echo "Starting application on port 8081..."
+java -jar build/libs/ROOT.war --server.port=8081 &
+echo "Application started! Access at http://localhost:8081"
